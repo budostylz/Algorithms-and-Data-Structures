@@ -2,6 +2,6 @@
 
 ## Java™ Platform, Standard Edition 7 API Specification
 
-##JDOODLE
+## DOODLE
 
 https://www.jdoodle.com/online-java-compiler
