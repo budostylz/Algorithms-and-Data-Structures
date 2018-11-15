@@ -38,7 +38,7 @@ public class MyClass {
   
         }
         
-          //Result of A
+          //Result of A[]
           for(int i = 0; i < A.length; i++)
           {
               System.out.println(A[i]);
