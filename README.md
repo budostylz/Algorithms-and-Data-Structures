@@ -15,3 +15,7 @@ https://docs.oracle.com/javase/7/docs/api/
 ## Insertion Sort
 
 https://www.geeksforgeeks.org/insertion-sort/
+
+## Merge Sort
+
+https://www.geeksforgeeks.org/merge-sort/
