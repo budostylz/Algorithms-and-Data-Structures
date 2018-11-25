@@ -31,3 +31,5 @@ public class LinearSearch
 	} 
 
 }
+
+/* This code is contributed by Rajat Mishra. */
