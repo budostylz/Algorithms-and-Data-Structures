@@ -1,8 +1,8 @@
-## Code and Syntax Highlighting
-https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code
-
 # Introduction to Python
 https://www.udacity.com/course/introduction-to-python--ud1110
+
+## Code and Syntax Highlighting
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code
 
 ## Bitwise Operators
 https://wiki.python.org/moin/BitwiseOperators
@@ -64,6 +64,16 @@ for key in my_dict2:
     #print(my_dict2[key][i], my_dict2[key])
     i += 1
 print(output)
+
+
+# Control Statements
+num = 5
+if num < 5:
+    print('The number is smaller than 5.')
+elif num == 5:
+    print('The number equals 5.')
+else:
+    print('The number is greater than 5.')
 
 
 ```
