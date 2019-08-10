@@ -1,5 +1,9 @@
 # Algorithms-and-Data-Structures
 
+## List of algorithms
+
+https://en.wikipedia.org/wiki/List_of_algorithms
+
 ## Java™ Platform, Standard Edition 7 API Specification
 
 https://docs.oracle.com/javase/7/docs/api/
@@ -27,3 +31,8 @@ https://www.geeksforgeeks.org/linear-search/
 ## Binary Search
 
 https://www.geeksforgeeks.org/binary-search/
+
+## Flowgorithm
+http://www.flowgorithm.org/index.htm
+
+
