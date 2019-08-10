@@ -1,5 +1,11 @@
 # Algorithms-and-Data-Structures
 
+## Python
+https://docs.python.org/3/library/time.html
+
+## Udacity Data Structures and Algorithms
+https://www.udacity.com/course/data-structures-and-algorithms-nanodegree--nd256
+
 ## List of algorithms
 
 https://en.wikipedia.org/wiki/List_of_algorithms
