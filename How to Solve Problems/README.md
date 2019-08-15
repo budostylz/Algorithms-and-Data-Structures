@@ -275,9 +275,8 @@ In order to answer this question, you should think about the dependencies betwee
 
 It's definitely a subjective question, and there are many reasonable answers to this question. Because of this, your answer will not be graded. But watching the instructor explain his solution will help you evaluate your solution.
 
-
-
-
+## Assert Statements in Python
+https://dbader.org/blog/python-assert-tutorial
 
 Problem Solving Steps
 
