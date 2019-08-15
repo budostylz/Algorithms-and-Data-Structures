@@ -283,9 +283,8 @@ Problem Solving Steps
 
         1. Map Inputs
         2. Map Outputs
-        3. Solve Problem
-        4. Work out Examples to Identify Relationships between Inputs and Outputs
-        5. Write psuedocode
-        6. Should we Implement the Psuedocode in Code
-        7. Find a Simple Mechanical Solution
-        8. What Should We Write First
+        3. Work out Examples to Identify Relationships between Inputs and Outputs
+        4. Write psuedocode
+        5. Should we Implement the Psuedocode in Code
+        6. Find a Simple Mechanical Solution
+        7. What Should We Write First
