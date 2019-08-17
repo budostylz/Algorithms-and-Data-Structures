@@ -57,7 +57,8 @@ Counting lines of code is not a perfect way to quantify efficiency, and we'll se
 
 
 
-
+![Comparison, Computational, Complexity](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Efficiency/comparison_computational_complexity.PNG "Comparison, Computational, Complexity")
+<a href="https://commons.wikimedia.org/wiki/File:Comparison_computational_complexity.svg">"Comparison of computational complexity" by Cmglee. Used under CC BY-SA 4.0.</a>
 
 ## Quadratic Example
 ```python
@@ -205,6 +206,8 @@ Wall time: 7.63 µs
 
 """
 ```
+
+## Constant Example
 
 ```python
 
