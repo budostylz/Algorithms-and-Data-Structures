@@ -55,6 +55,33 @@ In this case, the code inside the loop runs 100 times. So running this code will
 
 Counting lines of code is not a perfect way to quantify efficiency, and we'll see that there's a lot more to it as we go through the program. But in this case, it's an easy way for us to approximate the difference in efficiency between the two solutions. We can see that if Python has to perform an addition operation 100 times, this will certainly take longer than if it only has to perform an addition operation twice!
 
+# Big O Notation
+When describing the efficiency of an algorithm, we could say something like "the run-time of the algorithm increases linearly with the input size". This can get wordy and it also lacks precision. So as an alternative, mathematicians developed a form of notation called big O notation.
+
+The "O" in the name refers to the order of the function or algorithm in question. And that makes sense, because big O notation is used to describe the order—or rate of increase—in the run-time of an algorithm, in terms of the input size (n).
+
+In this next video, Brynn will show some different examples of what the notation would actually look like in practice. This likely won't "click" for you right away, but don't worry—once you've gotten some experience applying it to real problems, it will be much more concrete.
+
+<a href="https://video.udacity-data.com/topher/2019/February/5c648683_notation-intro-v3/notation-intro-v3_720p.mp4">Big O Notation</a>
+
+# Big O Notation (2/2)
+In the examples we've looked at here, we've been approximating efficiency by counting the number of lines of code that get executed. But when we are thinking about the run-time of a program, what we really care about is how fast the computer's processor is, and how many operations we're asking the processor to perform. Different lines of code may demand very different numbers of operations from the computer's processor. For now, counting lines will work OK as an approximation, but as we go through the course you'll see that there's a lot more going on under the surface.
+
+<a href="https://video.udacity-data.com/topher/2016/September/57d1b69e_notation-continued/notation-continued_720p.mp4">Big O Notation(2/2)</a>
+
+## Worst Case and Approximation
+Suppose that we analyze an algorithm and decide that it has the following relationship between the input size, n, and the number of operations needed to carry out the algorithm:
+
+ N = n^2 + 5
+
+ N=n^2 + 5
+
+Where nn is the input size and NN is the number of operations required.
+
+For example, if we gave this algorithm an input of 22, the number of required operations would be 2^2 +5 2 
+2+5 or simply 99.
+
+
 
 
 ![Comparison, Computational, Complexity](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Efficiency/comparison_computational_complexity.PNG "Comparison, Computational, Complexity")
@@ -241,3 +268,56 @@ Wall time: 8.58 µs
 <a href="https://wiki.python.org/moin/TimeComplexity">Python Complexities</a>
 
 <a href="https://marketplace.visualstudio.com/items?itemName=TomiTurtiainen.js-complexity-analysis">JS Complexity Analysis</a>
+
+
+# Space Complexity
+<a href="https://video.udacity-data.com/topher/2019/February/5c6498ff_worst-case-and-approximation-3-v1/worst-case-and-approximation-3-v1_720p.mp4">Space Efficiency</a>
+
+
+## Space Complexity Examples
+When we refer to space complexity, we are talking about how efficient our algorithm is in terms of memory usage. This comes down to the datatypes of the variables we are using and their allocated space requirements. In Python, it's less clear how to do this due to the the underlying data structures using more memory for house keeping functions (as the language is actually written in C).
+
+For example, in C/C++, an integer type takes up 4 bytes of memory to store the value, but in Python 3 an integer takes 14 bytes of space. Again, this extra space is used for housekeeping functions in the Python language.
+
+For the examples of this lesson we will avoid this complexity and assume the following sizes:
+
+![Space Complexity](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Efficiency/space_complexity.PNG "Space Complexity")
+
+It is also important to note that we will be focusing on just the data space being used and not any of the environment or instructional space.
+
+```python
+
+def our_constant_function():
+
+    x = 3 # Type int
+    y = 345 # Type int
+    z = 11 # Type int
+
+    answer = x+y+z
+
+    return answer
+```
+
+So in this example we have four integers (x, y, z and answer) and therefore our space complexity will be 4*4 = 16 bytes. This is an example of constant space complexity, since the amount of space used does not change with input size.
+
+```python
+
+def our_linear_function(n):
+
+    n = n # Type int
+    counter = 0 # Type int
+    list_ = [] # Assume that the list is empty (i.e., ignore the fact that there is actually meta data stored with Python lists)
+
+    while counter < n:
+        list. append(counter)
+        counter = counter + 1
+
+    return list_
+    
+```
+
+So in this example we have two integers (n and counter) and an expanding list, and therefore our space complexity will be 4*n + 8 since we have an expanding integer list and two integer data types. This is an example of linear space complexity.
+
+
+
+
