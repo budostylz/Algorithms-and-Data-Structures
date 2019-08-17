@@ -234,7 +234,8 @@ Wall time: 8.58 µs
 
 ```
 
-Resources
+## Resources
+
 <a href="https://www.bigocheatsheet.com/">Big-O Complexity Chart</a>
 
 <a href="https://wiki.python.org/moin/TimeComplexity">Python Complexities</a>
