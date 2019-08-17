@@ -74,12 +74,20 @@ Suppose that we analyze an algorithm and decide that it has the following relati
 
  N = n^2 + 5
 
- N=n^2 + 5
 
-Where nn is the input size and NN is the number of operations required.
+Where n is the input size and N is the number of operations required.
 
-For example, if we gave this algorithm an input of 22, the number of required operations would be 2^2 +5 2 
-2+5 or simply 99.
+For example, if we gave this algorithm an input of 2, the number of required operations would be 2^2 + 5 or simply 9.
+
+The thing to notice in the above exercise, is this: In n^2 + 5n, the 5 has very little impact on the total efficiency—especially as the input size gets larger and larger. Asking the computer to do 10,005 operations vs. 10,000 operations makes little difference. Thus, it is the n^2 that we really care about the most, and the +5 makes little difference.
+
+Most of the time, when analyzing the efficiency of an algorithm, the most important thing to know is the order. In other words, we care a lot whether the algorithm's time-complexity has a linear order or a quadratic order (or some other order). This means that very often (in fact, most of the time) when you are asked to analyze an algorithm, you can do so by making an approximation that significantly simplifies things. In this next video, Brynn will discuss this concept and show how it's used with Big O Notation.
+
+<a href="https://video.udacity-data.com/topher/2019/February/5c64990b_worst-case-and-approximation-v2/worst-case-and-approximation-v2_720p.mp4">Approximation</a>
+
+<a href="https://video.udacity-data.com/topher/2019/February/5c649906_worst-case-and-approximation-2-v1/worst-case-and-approximation-2-v1_720p.mp4">Worst Case</a>
+
+
 
 
 
