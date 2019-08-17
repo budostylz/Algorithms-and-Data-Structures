@@ -99,7 +99,7 @@ Wall time: 6.68 µs
 
 ```
 
-##Log Linear Example
+## Log Linear Example
 
 ```python
 
