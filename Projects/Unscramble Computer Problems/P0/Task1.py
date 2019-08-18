@@ -3,15 +3,21 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
+
+texts = ''
+calls = ''
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
-    print('texts', texts)
+   
 
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
+
+print('texts', texts)
+print('calls', calls)
 
 """
 TASK 1:
@@ -31,19 +37,11 @@ Inputs:
    4. Answering number for calls
 
 Functions:
-    1. getFixedNumbersCount: 
-        inputs: <number>
-        outputs: <count>
-    
-    2. getMobileNumbersCount: 
-        inputs: <number>
-        outputs: <count>
+    1. countList:
+        inputs: <texts>,<calls>
+        outputs: count
 
-    3. getTeleNumbersCount: 
-        inputs: <number>
-        outputs: <count>
-
-    4. getNumberType: 
+    2. getNumberType: 
         inputs: <number>
         outputs: numberType('fixed', mobile, telemarketer)
 
@@ -52,59 +50,47 @@ Functions:
 
 Psuedocode:
 
-getFixedNumbersCount;
-number = number;
-type = getNumberType(number);
-type = 'fixed';
+countList;
+
+texts = texts;
+_calls = calls;
+
+listIndex = 0;
+
+fixedCount = 0;
+mobileCount = 0;
+teleCount = 0;
 
 
-if(type == 'fixed'){
-  return 1;
-}
-else if(type == 'mobile'){
-  return 1;
-}
-else if(type === 'telemarketer'){
-  return 1;
-}
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-getMobileNumbersCount;
-number = number;
-type = getNumberType(number);
-type = 'mobile';
+//try merging texts and calls
+list = texts + _calls
 
 
-if(type == 'fixed'){
-  return 1;
-}
-else if(type == 'mobile'){
-  return 1;
-}
-else if(type === 'telemarketer'){
-  return 1;
-}
+while(list.length < listIndex){//iterate list
+  
+  incomingNumber = list[0];
+  answeringNumber = list[1];
+  
+  getNumberType(incomingNumber)
+  
+  type = getNumberType(incomingNumber)[0]
+  typeCount = getNumberType(incomingNumber)[1]
+  
+  if(type == 'fixed'){
+    fixedCount += typeCount;
+  }
+  else if(type == 'mobile'){
+    mobileCount += typeCount;
+  }
+  else if(type === 'telemarketer'){
+    teleCount += typeCount;
+  }
 
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-getTeleNumbersCount;
-number = number;
-type = getNumberType(number);
-type = 'telemarketer';
-
-
-if(type == 'fixed'){
-  return 1;
-}
-else if(type == 'mobile'){
-  return 1;
-}
-else if(type === 'telemarketer'){
-  return 1;
+  listIndex += 1
 }
 
+count = fixedCount + mobileCount + teleCount;
+return count;
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -117,15 +103,15 @@ number.length = 13;
 
 if(number.length ===  10){
   
-  return 'telemarketer';
+  return 'telemarketer', 1;
   
 }else if(number.length ===  11){
   
-  return 'mobile';
+  return 'mobile', 1;
   
 }else if(number.length ===  13){
   
-  return 'fixed';
+  return 'fixed', 1;
   
 }
 
