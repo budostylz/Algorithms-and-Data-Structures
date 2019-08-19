@@ -38,62 +38,47 @@ Outputs:
  4. Time of last call
  5. Seconds of last call
 
- Functions:
- 1. getFirstRecord : 
-        inputs: <incoming number>, <answering number>, <time>
-        return "First record of texts, <incoming number> texts <answering number> at time <time>"
+ Functions/Call Stack
+ 1. getListData : 
+        inputs: <texts> or <calls>
+        return: string 
 
- 2. getSecondRecord : 
-        inputs: <incoming number>, <answering number>, <time>, <during>
-        return "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
-
- 3. getTextData : 
-        inputs: texts:list
-        return <incoming number>, <answering number>, <time>
-
- 4. getCallData : 
-        inputs: calls:list
-        return <incoming number>, <answering number>, <time>, <during>
 
 
 Psuedocode:
 
-GetFirstRecord(<incomingNumber>,<answeringNumber>,<time>)
- return "First record of texts, <incoming number> texts <answering number> at time <time>"
+getListData;
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-GetSecondRecord(<incoming number>, <answering number>, <time>, <during>)
- return "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
+list = list
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+incomingNumber = '';
+answeringNumber = '';
+time = '';
+dataTag = 'text';
 
-getTextData(list)
 
-if(list.length > 0){
-  
-  incomingNumber = list[0][0];
-  answeringNumber = list[0][1];
-  time = list[0][2];
-  
-  return incomingNumber, answeringNumber, time
-}
-
-return False
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-getCallData;
 
 if(list.length > 0){
   
-  incomingNumber = list[0][0];
-  answeringNumber = list[0][1];
-  time = list[0][2];
-  during = list[0][2];
   
-  return incomingNumber, answeringNumber, time, during
+  if(dataTag === 'text'){
+    
+    incomingNumber = list[0][0];
+    answeringNumber = list[0][1];
+    time = list[0][2];
+    return "First record of texts, <incoming number> texts <answering number> at time <time>"
+    
+  }else{
+    
+    incomingNumber = list[list.length - 1][0];
+    answeringNumber = list[list.length - 1][1];
+    time = list[list.length - 1][2];
+    during = list[list.length - 1][3];
+    return "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
+  }
+  
+  
 }
-
-return False
 
 
 """

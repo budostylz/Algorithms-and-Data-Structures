@@ -36,7 +36,7 @@ Inputs:
    3. Incoming number of calls
    4. Answering number for calls
 
-Functions:
+Functions/Call Stack
     1. countList:
         inputs: <texts>,<calls>
         outputs: count
