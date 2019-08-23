@@ -16,6 +16,7 @@ print('calls', calls)
 TASK 2: Which telephone number spent the longest time on the phone
 during the period? Don't forget that time spent answering a call is
 also time spent on the phone.
+
 Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
@@ -39,8 +40,8 @@ September 2016.".
             output: list: list of September dates
         
         2. getHighTime
-            inputs: calls: list with September dates
-            output: "<telephone number> spent the longest time, <total time> seconds, on the phone during
+            inputs: september list
+            outputs: "<telephone number> spent the longest time, <total time> seconds, on the phone during
 
 Psuedocode:
 
@@ -70,16 +71,6 @@ sort(_calls);
 highTimeRecord = _calls[_calls.length -1];
 
 return "highTimeRecord[1] spent the longest time, highTimeRecord[3] seconds, on the phone during September 2016."
-
-
-
-
-
-
-
-
-
-
 
 
 

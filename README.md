@@ -44,4 +44,7 @@ https://www.geeksforgeeks.org/binary-search/
 ## Flowgorithm
 http://www.flowgorithm.org/index.htm
 
+## Sorting Algorithms
+https://brilliant.org/wiki/sorting-algorithms/
+
 
