@@ -34,15 +34,15 @@ Inputs:
 
     Functions/Call Stack
     
-        A1. checkTelemarketNumbers
+        1. checkTelemarketNumbers
             inputs: incoming number, list
             outputs: teleMarketList
 
-        A2. setTeleMarketList
+        2. setTeleMarketList
             inputs: incoming number, teleMarketList
             outputs: teleMarketList
         
-        A3. outputTeleMarketNumbers
+        3. outputTeleMarketNumbers
             inputs: teleMarketList
             outputs: "These numbers could be telemarketers:"<list of numbers>
 
