@@ -11,7 +11,7 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-print('False2',False)
+
 
 
 """
