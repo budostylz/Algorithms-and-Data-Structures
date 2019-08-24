@@ -35,7 +35,7 @@ Inputs:
     Functions/Call Stack
     
         1. checkTelemarketNumbers
-            inputs: incoming number, list
+            inputs: list
             outputs: teleMarketList
 
         2. setTeleMarketList
