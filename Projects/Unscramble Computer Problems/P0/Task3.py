@@ -80,7 +80,6 @@ checkBangaloreAreaCodes;
 
 list = list;
 bangaloreList = bangaloreList;
-
 whole = 0;
 part = 0;
 percentage = 0;
@@ -97,12 +96,13 @@ for(var i = 0; i < list.length; i++){
           part += 1;
    
    }
-
   
 }
+percentage = (part/whole);
+percentageStr = "<percentage> percent of calls from fixed lines in Bangalore are calls
+to other fixed lines in Bangalore.";
 
-//percentage = (part/whole)
-return bangaloreList, percentage;
+return bangaloreList, percentageStr;
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
