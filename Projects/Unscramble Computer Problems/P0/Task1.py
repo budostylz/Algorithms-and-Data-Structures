@@ -45,7 +45,7 @@ Functions/Call Stack
         inputs: callTextList
         outputs: "There are <count> different telephone numbers in the records."
 
-    2. getNumberType: 
+     3. getNumberType: 
         inputs: <number>
         outputs: numberType(numberType, 1)
         
