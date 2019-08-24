@@ -44,11 +44,36 @@ Functions/Call Stack
     2. getNumberType: 
         inputs: <number>
         outputs: numberType('fixed', mobile, telemarketer)
+        
+    3. mergeTextsAndCalls:
+        inputs: <calls> and <texts>
+        outputs: callTextList
 
 
 
 
 Psuedocode:
+
+mergeTextsAndCalls;
+
+_calls = calls;
+texts = texts;
+
+_callTextList = callTextList;
+
+for(var i = 0; i < _calls.length; i++){//add calls
+  _callTextList.push(_calls[i]);
+}
+
+for(var i = 0; i < texts.length; i++){//add texts
+  _callTextList.push(texts[i]);
+}
+
+return _callTextList;
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 countList;
 
@@ -63,7 +88,7 @@ teleCount = 0;
 
 
 //try merging texts and calls
-list = texts + _calls
+list = mergeTextsAndCalls(_calls, texts)
 
 
 while(list.length < listIndex){//iterate list
@@ -71,10 +96,9 @@ while(list.length < listIndex){//iterate list
   incomingNumber = list[0];
   answeringNumber = list[1];
   
-  getNumberType(incomingNumber)
   
-  type = getNumberType(incomingNumber)[0]
-  typeCount = getNumberType(incomingNumber)[1]
+  type = getNumberType(incomingNumber)[0];
+  typeCount = getNumberType(incomingNumber)[1];
   
   if(type == 'fixed'){
     fixedCount += typeCount;
@@ -86,11 +110,13 @@ while(list.length < listIndex){//iterate list
     teleCount += typeCount;
   }
 
-  listIndex += 1
+  listIndex += 1;
 }
 
 count = fixedCount + mobileCount + teleCount;
-return count;
+
+return "There are <count> different telephone numbers in the records.";
+
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
