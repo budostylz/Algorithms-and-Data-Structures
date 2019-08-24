@@ -52,27 +52,19 @@ Inputs:
 Psuedocode:
 
 checkTelemarketNumbers;
-
 list = list;
 teleMarketList = teleMarketList;
-
-
-
 for(var i = 0; i < list.length; i++){
   
    var incomingNumber = list[i][0];
-
    
    if(incomingNumber[9] === '0'  AND incomingNumber[8] === '4' AND incomingNumber[7] === '1' )
    {        
           teleMarketList = setTeleMarketList(incomingNumber, teleMarketList) 
    }
    
-
 }
-
-
-return teleMarketList,
+return teleMarketList;
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
