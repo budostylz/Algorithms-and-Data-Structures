@@ -63,8 +63,7 @@ lastIncomingCallTime = texts[0][3];
 textStr = "First record of texts, <incoming number> texts <answering number> at time <time>";
 _callStr = "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds";
 
- return textStr, _callStr
-
+ return textStr + '<newLine>' + _callStr
 
 
 
