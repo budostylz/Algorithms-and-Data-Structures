@@ -37,69 +37,24 @@ Inputs:
    4. Answering number for calls
 
 Functions/Call Stack
-    1. countList:
-        inputs: <texts>,<calls>
-        outputs: count
+     1. mergeTextsAndCalls:
+         inputs: <calls> and <texts>
+         outputs: callTextList
+            
+     2. countList:
+        inputs: callTextList
+        outputs: "There are <count> different telephone numbers in the records."
 
     2. getNumberType: 
         inputs: <number>
-        outputs: numberType('fixed', mobile, telemarketer)
+        outputs: numberType(numberType, 1)
         
-    3. mergeTextsAndCalls:
-        inputs: <calls> and <texts>
-        outputs: callTextList
+  
 
 
 
 
 Psuedocode:
-
-countList;
-
-texts = texts;
-_calls = calls;
-
-listIndex = 0;
-
-fixedCount = 0;
-mobileCount = 0;
-teleCount = 0;
-
-
-//try merging texts and calls
-list = mergeTextsAndCalls(_calls, texts)
-
-
-while(list.length < listIndex){//iterate list
-  
-  incomingNumber = list[0];
-  answeringNumber = list[1];
-  
-  
-  type = getNumberType(incomingNumber)[0];
-  typeCount = getNumberType(incomingNumber)[1];
-  
-  if(type == 'fixed'){
-    fixedCount += typeCount;
-  }
-  else if(type == 'mobile'){
-    mobileCount += typeCount;
-  }
-  else if(type === 'telemarketer'){
-    teleCount += typeCount;
-  }
-
-  listIndex += 1;
-}
-
-count = fixedCount + mobileCount + teleCount;
-
-return "There are <count> different telephone numbers in the records.";
-
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 mergeTextsAndCalls;
 
@@ -121,6 +76,44 @@ return _callTextList;
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+countList;
+
+_callTextList = _callTextList;
+
+listIndex = 0;
+fixedCount = 0;
+mobileCount = 0;
+teleCount = 0;
+
+
+while(_callTextList.length < listIndex){//iterate _callTextList
+  
+  incomingNumber = list[0];
+  answeringNumber = list[1];
+  
+  
+  type = getNumberType(incomingNumber)[0];
+  typeCount = getNumberType(incomingNumber)[1];
+  
+  if(type == 'fixed'){
+    fixedCount += typeCount;
+  }
+  else if(type == 'mobile'){
+    mobileCount += typeCount;
+  }
+  else if(type === 'telemarketer'){
+    teleCount += typeCount;
+  }
+  listIndex += 1;
+}
+count = fixedCount + mobileCount + teleCount;
+return "There are <count> different telephone numbers in the records.";
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 
 getNumberType;
