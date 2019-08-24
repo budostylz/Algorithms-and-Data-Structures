@@ -54,27 +54,6 @@ Functions/Call Stack
 
 Psuedocode:
 
-mergeTextsAndCalls;
-
-_calls = calls;
-texts = texts;
-
-_callTextList = callTextList;
-
-for(var i = 0; i < _calls.length; i++){//add calls
-  _callTextList.push(_calls[i]);
-}
-
-for(var i = 0; i < texts.length; i++){//add texts
-  _callTextList.push(texts[i]);
-}
-
-return _callTextList;
-
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 countList;
 
 texts = texts;
@@ -120,6 +99,28 @@ return "There are <count> different telephone numbers in the records.";
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+mergeTextsAndCalls;
+
+_calls = calls;
+texts = texts;
+
+_callTextList = callTextList;
+
+for(var i = 0; i < _calls.length; i++){//add calls
+  _callTextList.push(_calls[i]);
+}
+
+for(var i = 0; i < texts.length; i++){//add texts
+  _callTextList.push(texts[i]);
+}
+
+return _callTextList;
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 getNumberType;
