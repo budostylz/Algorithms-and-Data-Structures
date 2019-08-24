@@ -58,15 +58,15 @@ The percentage should have 2 decimal digits
 
     Functions/Call Stack
     
-        A1. checkBangaloreAreaCodes
+        1. checkBangaloreAreaCodes
             inputs: incoming number, list
             outputs: bangaloreList, percentageOfFixedToFixed
 
-        A2. setBangaloreAreaCodeList
+        2. setBangaloreAreaCodeList
             inputs: incoming number, bangaloreList
             outputs: bangaloreList
         
-        A3. outputAreaCodes
+        3. outputAreaCodes
             inputs: bangaloreList
             outputs: "The numbers called by people in Bangalore have codes:"<list of codes>
         
