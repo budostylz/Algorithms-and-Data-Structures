@@ -40,8 +40,8 @@ Outputs:
 
  Functions/Call Stack
  1. getListData : 
-        inputs: <texts> or <calls>
-        return: string 
+        inputs: <texts> and <calls>
+        return: textStr, _callStr 
 
 
 
@@ -49,36 +49,24 @@ Psuedocode:
 
 getListData;
 
-list = list
+texts = texts;
+_calls = _calls;
 
-incomingNumber = '';
-answeringNumber = '';
-time = '';
-dataTag = 'text';
+firstIncomingTextNumber = texts[0][0];
+firstAnsweringTextNumber = texts[0][1];
+firstIncomingTextTime = texts[0][2];
+
+lastIncomingCallNumber = texts[0][0];
+lastAnsweringCallNumber = texts[0][1];
+lastIncomingCallTime = texts[0][3];
+
+textStr = "First record of texts, <incoming number> texts <answering number> at time <time>";
+_callStr = "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds";
+
+ return textStr, _callStr
 
 
 
-if(list.length > 0){
-  
-  
-  if(dataTag === 'text'){
-    
-    incomingNumber = list[0][0];
-    answeringNumber = list[0][1];
-    time = list[0][2];
-    return "First record of texts, <incoming number> texts <answering number> at time <time>"
-    
-  }else{
-    
-    incomingNumber = list[list.length - 1][0];
-    answeringNumber = list[list.length - 1][1];
-    time = list[list.length - 1][2];
-    during = list[list.length - 1][3];
-    return "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
-  }
-  
-  
-}
 
 
 """
