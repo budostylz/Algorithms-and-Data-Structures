@@ -61,8 +61,8 @@ septList = [];
 
 for(var i =0; i < _calls.length; i++){
   
-    test1 = testRegEx(_calls[2])
-    test2 = testRegEx(_calls[2])
+    test1 = testSeptDate(_calls[2])
+    test2 = testSeptDate(_calls[2])
     
     if(test1 OR test2)
       septList.push(_calls);
