@@ -78,19 +78,16 @@ return _callTextList;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 countList;
-
 _callTextList = _callTextList;
 
-listIndex = 0;
 fixedCount = 0;
 mobileCount = 0;
 teleCount = 0;
 
-
-while(_callTextList.length < listIndex){//iterate _callTextList
+for(i = 0; i < _callTextList.length; i++){//iterate _callTextList
   
-  incomingNumber = list[0];
-  answeringNumber = list[1];
+  incomingNumber = list[i][0];
+  answeringNumber = list[i][1];
   
   
   type = getNumberType(incomingNumber)[0];
@@ -105,7 +102,7 @@ while(_callTextList.length < listIndex){//iterate _callTextList
   else if(type === 'telemarketer'){
     teleCount += typeCount;
   }
-  listIndex += 1;
+ 
 }
 count = fixedCount + mobileCount + teleCount;
 return "There are <count> different telephone numbers in the records.";
