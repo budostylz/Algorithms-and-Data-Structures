@@ -74,22 +74,20 @@ return septList;
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-testRegEx;
+testSepDate;
 
 dateStr = dateStr;
 
-pattern1 = '15-09-2016 13:17:58';
-pattern2 = '9/9/2016  5:38:13 PM';
+newDate = new Date(dateStr)
 
+checkSept = newDate.month
 
-result1 = RegEx(pattern1, dateStr);
-result2 = RegEx(pattern2, dateStr);
-
-if(result1 === true OR result2 === true){
-  return true;
+if(checkSept.month === 9){
+    return true;
 }else{
-  return false;
+    return false;
 }
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sortList;
