@@ -39,7 +39,7 @@ September 2016.".
             inputs: calls
             output: list: list of September dates
            
-        2. testSepDate
+        2. testSeptDate
              inputs: date
              output: boolean
              
@@ -74,7 +74,7 @@ return septList;
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-testSepDate;
+testSeptDate;
 
 dateStr = dateStr;
 
