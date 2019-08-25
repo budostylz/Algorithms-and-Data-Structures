@@ -39,7 +39,7 @@ September 2016.".
             inputs: calls
             output: list: list of September dates
            
-        2. testRegEx
+        2. testSepDate
              inputs: date
              output: boolean
              
