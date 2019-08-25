@@ -38,6 +38,10 @@ September 2016.".
         1. getSeptemberDates
             inputs: calls
             output: list: list of September dates
+           
+        2. testRegEx
+             inputs: date
+             output: boolean
         
         2. getHighTime
             inputs: september list
@@ -53,8 +57,8 @@ septArr = [];
 
 for(var i =0; i < _calls.length; i++){
   
-    test1 = _calls[2]:TestRegEx('15-09-2016 13:17:58');
-    test2 = _calls[2]:TestRegEx('9/9/2016  5:38:13 PM');
+    test1 = testRegEx(_calls[2])
+    test2 = testRegEx(_calls[2])
     
     if(test1 OR test2)
       septArr.push(_calls);
@@ -63,6 +67,25 @@ for(var i =0; i < _calls.length; i++){
 }
 
 return septArr;
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+testRegEx;
+
+dateStr = dateStr;
+
+pattern1 = '15-09-2016 13:17:58';
+pattern2 = '9/9/2016  5:38:13 PM';
+
+testStr = dateStr;
+result1 = RegEx(pattern1, dateStr);
+result2 = RegEx(pattern2, dateStr);
+
+if(result1 === true OR result2 === true){
+  return true;
+}else{
+  return false;
+}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 getHighTime;
 
