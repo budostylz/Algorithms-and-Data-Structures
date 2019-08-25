@@ -42,9 +42,13 @@ September 2016.".
         2. testRegEx
              inputs: date
              output: boolean
+             
+        3. sortList
+            inputs: septList
+            outputs: sortedCalls
         
-        2. getHighTime
-            inputs: september list
+        4. getHighTime
+            inputs: sortedCalls
             outputs: "<telephone number> spent the longest time, <total time> seconds, on the phone during
 
 Psuedocode:
@@ -53,7 +57,7 @@ getSeptemberDates;
 
 _calls = _calls;
 highTime = 0;
-septArr = [];
+septList = [];
 
 for(var i =0; i < _calls.length; i++){
   
@@ -61,12 +65,12 @@ for(var i =0; i < _calls.length; i++){
     test2 = testRegEx(_calls[2])
     
     if(test1 OR test2)
-      septArr.push(_calls);
+      septList.push(_calls);
       
   
 }
 
-return septArr;
+return septList;
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,11 +90,19 @@ if(result1 === true OR result2 === true){
 }else{
   return false;
 }
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sortList;
+
+_calls = _calls;
+
+sortedCalls = sort(_calls);
+
+return soretedCalls;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 getHighTime;
 
 _calls = _calls;
-sort(_calls);
 highTimeRecord = _calls[_calls.length -1];
 
 return "highTimeRecord[1] spent the longest time, highTimeRecord[3] seconds, on the phone during September 2016."
