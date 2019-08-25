@@ -81,7 +81,7 @@ dateStr = dateStr;
 pattern1 = '15-09-2016 13:17:58';
 pattern2 = '9/9/2016  5:38:13 PM';
 
-testStr = dateStr;
+
 result1 = RegEx(pattern1, dateStr);
 result2 = RegEx(pattern2, dateStr);
 
