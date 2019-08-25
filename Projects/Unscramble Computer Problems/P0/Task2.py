@@ -35,17 +35,18 @@ September 2016.".
         3. Seconds
 
     Functions/Call Stack
-        1. getSeptemberDates
-            inputs: calls
-            output: list: list of September dates
+    
+        1. sortList
+            inputs: list
+            outputs: sortedCalls
+            
+        2. getSeptemberDates
+            inputs: sortedCalls
+            output: list: septDates
            
         2. testSeptDate
              inputs: date
              output: boolean
-             
-        3. sortList
-            inputs: septList
-            outputs: sortedCalls
         
         4. getHighTime
             inputs: sortedCalls
