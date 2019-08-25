@@ -57,7 +57,6 @@ Psuedocode:
 getSeptemberDates;
 
 _calls = _calls;
-highTime = 0;
 septList = [];
 
 for(var i =0; i < _calls.length; i++){
