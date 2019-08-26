@@ -1,5 +1,5 @@
 # Sorting Algorithms
 
-![New Tweet View](https://github.com/budostylz/ReactJS/blob/master/React_Redux/Real%20World%20Redux/create_new_tweet.png "New Tweet View")
+![New Tweet View](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Sorting%20Algorithms/quickSort.PNG "New Tweet View")
 
 
