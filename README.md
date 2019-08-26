@@ -47,4 +47,6 @@ http://www.flowgorithm.org/index.htm
 ## Sorting Algorithms
 https://brilliant.org/wiki/sorting-algorithms/
 
+## Python Program for QuickSort
+https://www.geeksforgeeks.org/python-program-for-quicksort/
 
