@@ -101,7 +101,7 @@ Singly Linked List
 
 This connection is typically implemented by setting the next attribute on a node object itself.
 
-'''python
+```python
 
 class Node:
     def __init__(self, value):
@@ -114,7 +114,7 @@ head = Node(1)
 head.next = Node(2)
         
 
-'''
+```
 
 
 
