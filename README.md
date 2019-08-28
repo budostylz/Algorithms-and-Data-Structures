@@ -115,7 +115,39 @@ head.next = Node(2)
         
 
 ```
+Above we have a simple linked list with two elements, [1, 2]. Usually you'll want to create a LinkedList class as a wrapper for the nodes themselves and to provide common methods that operate on the list. For example you can implement an append method that adds a value to the end of the list. Note that if we're only tracking the head of the list, this runs in linear time - 𝑂(𝑁) - since you have to iterate through the entire list to get to the tail node. However, prepending (adding to the head of the list) can be done in constant 𝑂(1) time. You'll implement this prepend method in the Linked List Practice notebook.
 
+```python
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
+        
+        # Move to the tail (the last node)
+        node = self.head
+        while node.next:
+            node = node.next
+        
+        node.next = Node(value)
+        return
+        
+linked_list = LinkedList()
+linked_list.append(1)
+linked_list.append(2)
+linked_list.append(4)
+
+node = linked_list.head
+while node:
+    print(node.value)
+    node = node.next
+
+
+```
 
 
 
