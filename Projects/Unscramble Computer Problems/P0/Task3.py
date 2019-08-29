@@ -43,8 +43,6 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
-<<<<<<< HEAD
-=======
 
 """DESIGN
 
@@ -72,6 +70,7 @@ The percentage should have 2 decimal digits
             inputs: bangaloreList
             outputs: "The numbers called by people in Bangalore have codes:"<list of codes>
         
+
 
 
 
@@ -153,4 +152,99 @@ for(var i = 0; i < bangaloreList.length; i++){
 
 """
 
->>>>>>> 32d4fba0728cd6fa976ac0b34e11fbaec2f9f08c
+
+def checkBangaloreAreaCodes(calls):
+
+    bangaloreList = []
+    whole = 0
+    part = 0
+    percentage = ''
+    count = 0
+
+    
+    for i, value in enumerate(calls):
+     
+     incomingNumber =  str(value[0])
+     answeringNumber = str(value[1])
+
+
+     if(
+         (incomingNumber[0] == '(' and incomingNumber[1] == '0' and incomingNumber[2] == '8' and incomingNumber[3] == '0')#fixed 
+                                                or 
+         (incomingNumber[0] == '7'  and incomingNumber[1] == '8' and incomingNumber[2] == '9')#mobile
+                                                or
+         (incomingNumber[0] == '1'  and incomingNumber[1] == '4' and incomingNumber[2] == '0') ):#tele  
+             #print(incomingNumber)
+             bangaloreList = setBangaloreAreaCodeList(incomingNumber, bangaloreList)
+
+
+     if(incomingNumber[0] == '(' and incomingNumber[1] == '0' and incomingNumber[2] == '8' and incomingNumber[3] == '0'):#fixed incoming
+              whole += 1
+              if(answeringNumber[0] == '(' and answeringNumber[1] == '0' and answeringNumber[2] == '8' and answeringNumber[3] == '0'):#fixed answering
+               part += 1
+    
+    return bangaloreList, part, whole
+
+
+def setBangaloreAreaCodeList(incomingNumber, bangaloreList):
+
+    checkRepeats = False
+
+    for i, value in enumerate(bangaloreList):
+        #print('The index value is: ' + str(i) + '. The value at i is: ' + str(value))
+        #print('-------------------------------------')
+        if incomingNumber == str(value):
+            checkRepeats = True
+
+    if checkRepeats == False:
+        bangaloreList.append(incomingNumber)
+
+    return bangaloreList
+
+
+
+#Apply Bubble Sort pattern from Udacity Sorting Algorithm Section. Worst Case is O(n^2) 
+def bangaloreSort(bangaloreList):
+    for iteration in range(len(bangaloreList)):
+        for index in range(1, len(bangaloreList)):
+            this = bangaloreList[index]
+            prev = bangaloreList[index - 1]
+
+            if prev <= this:
+                continue
+
+            bangaloreList[index] = prev
+            bangaloreList[index - 1] = this
+
+    return bangaloreList
+
+def outputA(sortedCodes):
+
+    for i, value in enumerate(sortedCodes):
+        print( "The numbers called by people in Bangalore have codes:" + str(value))
+        print('-------------------------------------')
+
+        
+def outputB(part, whole):
+
+
+    #percentage =  [(fixedIncoming to (fixedAnswering)) / (fixedIncoming to (fixedAnswering + mobileAnswering + teleAnswering))] * 100
+    rawPercent = str((part / whole) * 100)
+    percentageStr = ''
+
+    i = 0
+    while(i < 5):
+     percentageStr += rawPercent[i]
+     i += 1
+
+    print(percentageStr +  " percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore." )
+         
+
+#drivers
+bangaloreResults = checkBangaloreAreaCodes(calls)
+sortedCodes = bangaloreSort(bangaloreResults[0])
+outputA(sortedCodes)
+outputB(bangaloreResults[1], bangaloreResults[2])
+
+
+

@@ -64,22 +64,6 @@ def getHighTime(sortedSeptemberList):
     return answeringNumber + " spent the longest time, "+totalTime+" seconds, on the phone during September 2016."
 
 
-#Apply Bubble Sort pattern from Udacity Sorting Algorithm Section
-def septemberSort(septemberList):
-    for iteration in range(len(septemberList)):
-        for index in range(1, len(septemberList)):
-            this = int(septemberList[index][3])
-            prev = int(septemberList[index - 1][3])
-
-            if prev <= this:
-                continue
-
-            septemberList[index] = septemberList[index - 1]
-            septemberList[index - 1] = septemberList[index]
-
-    return septemberList
-
-
 
 #Apply QuickSort pattern from Udacity Sorting Algorithm Section
 def sort_a_little_bit(items, begin_index, end_index):    
