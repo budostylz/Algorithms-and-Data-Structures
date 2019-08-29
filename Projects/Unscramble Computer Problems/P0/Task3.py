@@ -158,8 +158,9 @@ def checkBangaloreAreaCodes(calls):
     bangaloreList = []
     whole = 0
     part = 0
-    percentage = ''
     count = 0
+ 
+   
 
     
     for i, value in enumerate(calls):
@@ -167,14 +168,12 @@ def checkBangaloreAreaCodes(calls):
      incomingNumber =  str(value[0])
      answeringNumber = str(value[1])
 
-
      if(
          (incomingNumber[0] == '(' and incomingNumber[1] == '0' and incomingNumber[2] == '8' and incomingNumber[3] == '0')#fixed 
                                                 or 
          (incomingNumber[0] == '7'  and incomingNumber[1] == '8' and incomingNumber[2] == '9')#mobile
                                                 or
          (incomingNumber[0] == '1'  and incomingNumber[1] == '4' and incomingNumber[2] == '0') ):#tele  
-             #print(incomingNumber)
              bangaloreList = setBangaloreAreaCodeList(incomingNumber, bangaloreList)
 
 
@@ -191,8 +190,6 @@ def setBangaloreAreaCodeList(incomingNumber, bangaloreList):
     checkRepeats = False
 
     for i, value in enumerate(bangaloreList):
-        #print('The index value is: ' + str(i) + '. The value at i is: ' + str(value))
-        #print('-------------------------------------')
         if incomingNumber == str(value):
             checkRepeats = True
 
@@ -226,8 +223,6 @@ def outputA(sortedCodes):
 
         
 def outputB(part, whole):
-
-
     #percentage =  [(fixedIncoming to (fixedAnswering)) / (fixedIncoming to (fixedAnswering + mobileAnswering + teleAnswering))] * 100
     rawPercent = str((part / whole) * 100)
     percentageStr = ''

@@ -25,8 +25,6 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-<<<<<<< HEAD
-=======
 """DESIGN
 Outputs:
   1. List of telemarketing numbers
@@ -116,6 +114,3 @@ for(var i = 0; i < teleMarketList.length; i++){
 """
 
 
-
-
->>>>>>> 32d4fba0728cd6fa976ac0b34e11fbaec2f9f08c
