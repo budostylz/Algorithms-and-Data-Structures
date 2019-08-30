@@ -25,92 +25,49 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-"""DESIGN
-Outputs:
-  1. List of telemarketing numbers
 
-Inputs:
-   1. Incoming number of calls
+def checkTelemarketNumbers(calls):
 
-    Functions/Call Stack
-    
-        1. checkTelemarketNumbers
-            inputs: list
-            outputs: teleMarketList
-
-        2. setTeleMarketList
-            inputs: incoming number, teleMarketList
-            outputs: teleMarketList
-        
-        3. outputTeleMarketNumbers
-            inputs: teleMarketList
-            outputs: "These numbers could be telemarketers:"<list of numbers>
-
-
-
-
-Psuedocode:
-
-checkTelemarketNumbers;
-list = list;
-teleMarketList = teleMarketList;
-for(var i = 0; i < list.length; i++){
-  
-   var incomingNumber = list[i][0];
+    telemarketList = []
    
-   if(incomingNumber[9] === '0'  AND incomingNumber[8] === '4' AND incomingNumber[7] === '1' )
-   {        
-          teleMarketList = setTeleMarketList(incomingNumber, teleMarketList) 
-   }
-   
-}
-return teleMarketList;
+    for i, value in enumerate(calls):
+        if not(' ') in str(value[0]) and str(value[0][0]) != '(':
+            checkRepeats(str(value[0]), telemarketList)
+
+    return telemarketList
+
+def checkRepeats(incomingNumber, telemarketList):
+
+    checkRepeats = False
+
+    for i, value in enumerate(telemarketList):
+        if incomingNumber == str(value):
+            checkRepeats = True
+
+    if checkRepeats == False:
+        telemarketList.append(incomingNumber)
+
+    return telemarketList
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#Apply Bubble Sort pattern from Udacity Sorting Algorithm Section. Worst Case is O(n^2) 
+def teleSort(sortedScamerNumbers):
+    for iteration in range(len(sortedScamerNumbers)):
+        for index in range(1, len(sortedScamerNumbers)):
+            this = sortedScamerNumbers[index]
+            prev = sortedScamerNumbers[index - 1]
 
-setTeleMarketList;
+            if prev <= this:
+                continue
 
-incomingNumber = inComingNumber;
-teleMarketList = teleMarketList
-checkRepeats = false
+            sortedScamerNumbers[index] = prev
+            sortedScamerNumbers[index - 1] = this
 
-for(var i = 0; i < teleMarketList.length; i++){
-  
-    if(incomingNumber === teleMarketList[i]){
-        checkRepeats = true;
-    }
-  
-}
+    return sortedScamerNumbers
 
-if(checkRepeats === false){
-  teleMarketList.push(incomingNumber)
-}
-
-return teleMarketList;
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-outputTeleMarketNumbers;
-
-teleMarketList = teleMarketList;
-
-
-for(var i = 0; i < teleMarketList.length; i++){
-  
-  var code = teleMarketList[i];
-  var str = "These numbers could be telemarketers: <list of numbers>";
-  
-  return str;
-  
-  
-}
-
-
-
-
-
-"""
-
-
+#drivers
+scamerNumbers = checkTelemarketNumbers(calls)
+sortedScamerNumbers = teleSort(scamerNumbers)
+print('These numbers could be telemarketers: ')
+for i, value in enumerate(sortedScamerNumbers):
+        print('\t' + str(value))
