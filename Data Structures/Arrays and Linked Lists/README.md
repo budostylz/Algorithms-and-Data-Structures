@@ -103,4 +103,10 @@ Here's the bottom line:
 
 This approach will allow you to develop a better understanding for the underlying data structures.
 
+# Linked Lists
+https://youtu.be/zxkpZrozDUk
+
+https://youtu.be/ZONGA5wmREI
+
+
 
