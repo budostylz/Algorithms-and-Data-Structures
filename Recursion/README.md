@@ -7,4 +7,4 @@ With recursion, we solve a problem by first solving smaller instances of the sam
 
 https://youtu.be/_aI2Jch6Epk
 
-![Recursion](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Stacks%20and%20Queues/queue_linked_list.PNG "Recursion")
+![Recursion](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Recursion/recursion.PNG "Recursion")
