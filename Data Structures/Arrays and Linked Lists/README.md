@@ -671,3 +671,565 @@ while node is not None:
 
 ![Computational Complexity](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/computational_complexity.PNG "Computational Complexity")
 
+![Add One](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/add1.PNG "Add One")
+
+```python
+
+# Solution
+def add_one(arr):
+    output = 1;
+
+    for i in range(len(arr), 0, -1):
+        output = output + arr[i - 1]
+        borrow = output//10
+        if borrow == 0:
+            arr[i - 1] = output
+            break
+        else:
+            arr[i - 1] = output % 10
+            output = borrow
+    arr = [borrow] + arr
+    index = 0
+    while arr[index]==0:
+        index += 1
+    return arr[index:]
+
+def test_function(test_case):
+    arr = test_case[0]
+    solution = test_case[1]
+    
+    output = add_one(arr)
+    for index, element in enumerate(output):
+        if element != solution[index]:
+            print("Fail")
+            return
+    print("Pass") 
+    
+arr = [0]
+solution = [1]
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [1, 2, 3]
+solution = [1, 2, 4]
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [9, 9, 9]
+solution = [1, 0, 0, 0]
+test_case = [arr, solution]
+test_function(test_case)
+
+
+```
+
+![Duplicate Number](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/duplicate_number.PNG "Duplicate Number")
+
+```python
+
+# Solution
+def add_one(arr):
+    output = 1;
+
+    for i in range(len(arr), 0, -1):
+        output = output + arr[i - 1]
+        borrow = output//10
+        if borrow == 0:
+            arr[i - 1] = output
+            break
+        else:
+            arr[i - 1] = output % 10
+            output = borrow
+    arr = [borrow] + arr
+    index = 0
+    while arr[index]==0:
+        index += 1
+    return arr[index:]
+
+def test_function(test_case):
+    arr = test_case[0]
+    solution = test_case[1]
+    
+    output = add_one(arr)
+    for index, element in enumerate(output):
+        if element != solution[index]:
+            print("Fail")
+            return
+    print("Pass") 
+    
+arr = [0]
+solution = [1]
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [1, 2, 3]
+solution = [1, 2, 4]
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [9, 9, 9]
+solution = [1, 0, 0, 0]
+test_case = [arr, solution]
+test_function(test_case)
+
+
+
+
+```
+![Max Sum](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/maxSum.PNG "Max Sum")
+
+```python
+
+# Solution
+def max_sum_subarray(arr):
+    max_sum = arr[0]
+    current_sum = arr[0]
+
+    for num in arr[1:]:
+        current_sum = max(current_sum + num, num)
+        max_sum = max(current_sum, max_sum)
+    return max_sum
+
+def test_function(test_case):
+    arr = test_case[0]
+    solution = test_case[1]
+    
+    output = max_sum_subarray(arr)
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+
+arr= [1, 2, 3, -4, 6]
+solution= 8 # sum of array
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [1, 2, -5, -4, 1, 6]
+solution = 7   # sum of last two elements
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [-12, 15, -13, 14, -1, 2, 1, -5, 4]
+solution = 18  # sum of subarray = [15, -13, 14, -1, 2, 1]
+test_case = [arr, solution]
+test_function(test_case)
+
+
+
+```
+
+## Pascal's Triangle
+https://www.mathsisfun.com/pascals-triangle.html
+
+![Pascal's Triangle](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/pascalsTriangle.PNG "Pascal's Triangle")
+
+```python
+
+# Solution
+
+def nth_row_pascal(n):
+    if n == 0:
+        return [1]
+    current_row = [1]
+    for i in range(1, n + 1):
+        previous_row = current_row
+        current_row = [1]
+        for j in range(1, i):
+            next_number = previous_row[j] + previous_row[j - 1]
+            current_row.append(next_number)
+        current_row.append(1)
+    return current_row
+
+def test_function(test_case):
+    n = test_case[0]
+    solution = test_case[1]
+    output = nth_row_pascal(n)
+    if solution == output:
+        print("Pass")
+    else:
+        print("Fail")
+
+n = 0
+solution = [1]
+test_case = [n, solution]
+test_function(test_case)
+
+n = 1
+solution = [1, 1]
+test_case = [n, solution]
+test_function(test_case)
+
+n = 2
+solution = [1, 2, 1]
+test_case = [n, solution]
+test_function(test_case)
+
+n = 3
+solution = [1, 3, 3, 1]
+test_case = [n, solution]
+test_function(test_case)
+
+n = 4
+solution = [1, 4, 6, 4, 1]
+test_case = [n, solution]
+test_function(test_case)
+
+```
+
+![Even Odd](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/even_odd.PNG "Even Odd")
+
+```python
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Solution
+def even_after_odd(head):
+    
+    if head is None:
+        return head
+    
+    even = None
+    odd = None
+    even_tail = None
+    head_tail = None
+    
+    while head:
+        next_node = head.next
+        
+        if head.data % 2 == 0:
+            if even is None:
+                even = head
+                even_tail = even
+            else:
+                even_tail.next = head
+                even_tail = even_tail.next
+        else:
+            if odd is None:
+                odd = head
+                odd_tail = odd
+            else:
+                odd_tail.next = head
+                odd_tail = odd_tail.next
+        head.next = None
+        head = next_node
+    
+    if odd is None:
+        return even
+    odd_tail.next = even
+    return odd
+
+# helper functions for testing purpose
+def create_linked_list(arr):
+    if len(arr)==0:
+        return None
+    head = Node(arr[0])
+    tail = head
+    for data in arr[1:]:
+        tail.next = Node(data)
+        tail = tail.next
+    return head
+
+def print_linked_list(head):
+    while head:
+        print(head.data, end=' ')
+        head = head.next
+    print()
+
+def test_function(test_case):
+    head = test_case[0]
+    solution = test_case[1]
+    
+    node_tracker = dict({})
+    node_tracker['nodes'] = list()
+    temp = head
+    while temp:
+        node_tracker['nodes'].append(temp)
+        temp = temp.next
+
+    head = even_after_odd(head)    
+    temp = head
+    index = 0
+    try:
+        while temp:
+            if temp.data != solution[index] or temp not in node_tracker['nodes']:
+                print("Fail")
+                return
+            temp = temp.next
+            index += 1
+        print("Pass")            
+    except Exception as e:
+        print("Fail")
+
+arr = [1, 2, 3, 4, 5, 6]
+solution = [1, 3, 5, 2, 4, 6]
+head = create_linked_list(arr)
+test_case = [head, solution]
+test_function(test_case)
+
+arr = [1, 3, 5, 7]
+solution = [1, 3, 5, 7]
+head = create_linked_list(arr)
+test_case = [head, solution]
+test_function(test_case)
+
+arr = [2, 4, 6, 8]
+solution = [2, 4, 6, 8]
+head = create_linked_list(arr)
+test_case = [head, solution]
+test_function(test_case)
+
+```
+
+![Skip i Remove j](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/skipi_removej.PNG "Skip i Remove j")
+
+```python
+
+# LinkedList Node class for your reference
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+# Solution
+def skip_i_delete_j(head, i, j):
+    if i == 0:
+        return None
+    
+    if head is None or j < 0 or i < 0:
+        return head
+    
+    current = head
+    previous = None
+    while current:
+        # skip (i - 1) nodes
+        for _ in range(i - 1):
+            if current is None:
+                return head
+            current = current.next
+        previous = current
+        current = current.next
+        
+        # delete next j nodes
+        for _ in range(j):
+            if current is None:
+                break
+            next_node = current.next
+            current = next_node
+        previous.next = current
+    return head
+
+# helper functions for testing purpose
+def create_linked_list(arr):
+    if len(arr)==0:
+        return None
+    head = Node(arr[0])
+    tail = head
+    for data in arr[1:]:
+        tail.next = Node(data)
+        tail = tail.next
+    return head
+
+def print_linked_list(head):
+    while head:
+        print(head.data, end=' ')
+        head = head.next
+    print()
+
+def test_function(test_case):
+    head = test_case[0]
+    i = test_case[1]
+    j = test_case[2]
+    solution = test_case[3]
+        
+    temp = skip_i_delete_j(head, i, j)
+    index = 0
+    try:
+        while temp is not None:
+            if temp.data != solution[index]:
+                print("Fail")
+                return
+            index += 1
+            temp = temp.next
+        print("Pass")
+    except Exception as e:
+        print("Fail")
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+i = 2
+j = 2
+head = create_linked_list(arr)
+solution = [1, 2, 5, 6, 9, 10]
+test_case = [head, i, j, solution]
+test_function(test_case)
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+i = 2
+j = 3
+head = create_linked_list(arr)
+solution = [1, 2, 6, 7, 11, 12]
+test_case = [head, i, j, solution]
+test_function(test_case)
+
+arr = [1, 2, 3, 4, 5]
+i = 2
+j = 4
+head = create_linked_list(arr)
+solution = [1, 2]
+test_case = [head, i, j, solution]
+test_function(test_case)
+
+```
+
+![Linked List Swap](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/linked_list_swap.PNG "Linked List Swap")
+
+```python
+
+# Solution
+
+class Node:
+    """LinkedListNode class to be used for this problem"""
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def swap_nodes(head, left_index, right_index):
+
+    # if both the indices are same
+    if left_index == right_index:
+        return head
+    
+    
+    left_previous = None
+    left_current = None
+
+    right_previous = None
+    right_current = None
+
+    count = 0
+    temp = head
+    new_head = None
+
+    # find out previous and current node at both the indices
+    while temp is not None:
+        if count == left_index:
+            left_current = temp
+        elif count == right_index:
+            right_current = temp
+            break
+
+        if left_current is None:
+            left_previous = temp
+        right_previous = temp
+        temp = temp.next
+        count += 1
+
+    right_previous.next = left_current
+    temp = left_current.next
+    left_current.next = right_current.next
+
+    # if both the indices are next to each other
+    if left_index != right_index:
+        right_current.next = temp
+
+    # if the node at first index is head of the original linked list
+    if left_previous is None:
+        new_head = right_current
+    else:
+        left_previous.next = right_current
+        new_head = head
+
+    return new_head
+
+def test_function(test_case):
+    head = test_case[0]
+    left_index = test_case[1]
+    right_index = test_case[2]
+    
+    left_node = None
+    right_node = None
+    
+    temp = head
+    index = 0
+    try:
+        while temp is not None:
+            if index == left_index:
+                left_node = temp
+            if index == right_index:
+                right_node = temp
+                break
+            index += 1
+            temp = temp.next
+
+        updated_head = swap_nodes(head, left_index, right_index)
+
+        temp = updated_head
+        index = 0
+        pass_status = [False, False]
+
+        while temp is not None:
+            if index == left_index:
+                pass_status[0] = temp is right_node
+            if index == right_index:
+                pass_status[1] = temp is left_node
+
+            index += 1
+            temp = temp.next
+
+        if pass_status[0] and pass_status[1]:
+            print("Pass")
+        else:
+            print("Fail")
+        return updated_head
+    except Exception as e:
+        print("Fail")
+
+# helper functions for testing purpose
+def create_linked_list(arr):
+    if len(arr)==0:
+        return None
+    head = Node(arr[0])
+    tail = head
+    for data in arr[1:]:
+        tail.next = Node(data)
+        tail = tail.next
+    return head
+
+def print_linked_list(head):
+    while head:
+        print(head.data, end=" ")
+        head = head.next
+    print()
+
+arr = [3, 4, 5, 2, 6, 1, 9]
+head = create_linked_list(arr)
+left_index = 3
+right_index = 4
+
+test_case = [head, left_index, right_index]
+updated_head = test_function(test_case)
+
+arr = [3, 4, 5, 2, 6, 1, 9]
+left_index = 2 
+right_index = 4
+head = create_linked_list(arr)
+test_case = [head, left_index, right_index]
+updated_head = test_function(test_case)
+
+arr = [3, 4, 5, 2, 6, 1, 9]
+left_index = 0
+right_index = 1
+head = create_linked_list(arr)
+test_case = [head, left_index, right_index]
+updated_head = test_function(test_case)
+
+
+
+
+```
+
+
