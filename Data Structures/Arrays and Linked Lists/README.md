@@ -9,6 +9,7 @@ Then, as we go on in the course, we'll consider the pros and cons of using diffe
 
 We'll start with a discussion of a very general structure—a collection.
 
+## Colections
 https://youtu.be/cZORvZq-tI0
 
 ## Properties of collections
@@ -16,3 +17,17 @@ As Brynn discussed, collections:
 
  * Don't have a particular order (so you can't say "give me the 3rd element in this collection")
  * Don't have to have objects of the same type
+
+ # Lists
+ https://youtu.be/KUQSgUMtyv0
+
+ ## Properties of lists
+As Brynn described, lists:
+
+* Have an order (so you can say things like "give me the 3rd item in the list")
+* Have no fixed length (you can add or remove elements)
+
+#Arrays
+https://youtu.be/OnPP5xDmFv0
+
+![Flex Direction Row](https://github.com/budostylz/ReactJS/blob/master/React%20Native/Styling%20%26%20Layout/flex_direction_row.PNG "Flex Direction Row")
