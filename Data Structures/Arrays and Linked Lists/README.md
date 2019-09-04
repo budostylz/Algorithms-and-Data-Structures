@@ -244,3 +244,430 @@ while node:
 
 A circular linked list is typically considered pathological because when you try to iterate through it, you'll never find the end. We usually want to detect if there is a loop in our linked lists to avoid these problems. You'll get a chance to implement a solution for detecting loops later in the lesson.
 
+# Linked List Practice
+Implement a linked list class. Your class should be able to:
+
+* Append data to the tail of the list and prepend to the head
+* Search the linked list for a value and return the node
+* Remove a node
+* Pop, which means to return the first node's value and delete the node from the list
+* Insert data at some position in the list
+* Return the size (length) of the linked list
+
+```python
+
+# Solution
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def prepend(self, value):
+        """ Prepend a node to the beginning of the list """
+
+        if self.head is None:
+            self.head = Node(value)
+            return
+
+        new_head = Node(value)
+        new_head.next = self.head
+        self.head = new_head
+
+    def append(self, value):
+        """ Append a node to the end of the list """
+        # Here I'm not keeping track of the tail. It's possible to store the tail
+        # as well as the head, which makes appending like this an O(1) operation.
+        # Otherwise, it's an O(N) operation as you have to iterate through the
+        # entire list to add a new tail.
+
+        if self.head is None:
+            self.head = Node(value)
+            return
+
+        node = self.head
+        while node.next:
+            node = node.next
+
+        node.next = Node(value)
+
+    def search(self, value):
+        """ Search the linked list for a node with the requested value and return the node. """
+        if self.head is None:
+            return None
+
+        node = self.head
+        while node:
+            if node.value == value:
+                return node
+            node = node.next
+
+        raise ValueError("Value not found in the list.")
+
+
+    def remove(self, value):
+        """ Delete the first node with the desired data. """
+        if self.head is None:
+            return
+
+        if self.head.value == value:
+            self.head = self.head.next
+            return
+
+        node = self.head
+        while node.next:
+            if node.next.value == value:
+                node.next = node.next.next
+                return
+            node = node.next
+
+        raise ValueError("Value not found in the list.")
+
+
+    def pop(self):
+        """ Return the first node's value and remove it from the list. """
+        if self.head is None:
+            return None
+
+        node = self.head
+        self.head = self.head.next
+
+        return node.value
+
+    def insert(self, value, pos):
+        """ Insert value at pos position in the list. If pos is larger than the
+            length of the list, append to the end of the list. """
+        if pos == 0:
+            self.prepend(value)
+            return
+
+        index = 0
+        node = self.head
+        while node.next and index <= pos:
+            if (pos - 1) == index:
+                new_node = Node(value)
+                new_node.next = node.next
+                node.next = new_node
+                return
+
+            index += 1
+            node = node.next
+        else:
+            self.append(value)
+
+    def size(self):
+        """ Return the size or length of the linked list. """
+        size = 0
+        node = self.head
+        while node:
+            size += 1
+            node = node.next
+
+        return size
+
+    def to_list(self):
+        out = []
+        node = self.head
+        while node:
+            out.append(node.value)
+            node = node.next
+        return out
+
+
+## Test your implementation here
+
+# Test prepend
+linked_list = LinkedList()
+linked_list.prepend(1)
+assert linked_list.to_list() == [1], f"list contents: {linked_list.to_list()}"
+linked_list.append(3)
+linked_list.prepend(2)
+assert linked_list.to_list() == [2, 1, 3], f"list contents: {linked_list.to_list()}"
+    
+# Test append
+linked_list = LinkedList()
+linked_list.append(1)
+assert linked_list.to_list() == [1], f"list contents: {linked_list.to_list()}"
+linked_list.append(3)
+assert linked_list.to_list() == [1, 3], f"list contents: {linked_list.to_list()}"
+
+# Test search
+linked_list.prepend(2)
+linked_list.prepend(1)
+linked_list.append(4)
+linked_list.append(3)
+assert linked_list.search(1).value == 1, f"list contents: {linked_list.to_list()}"
+assert linked_list.search(4).value == 4, f"list contents: {linked_list.to_list()}"
+
+# Test remove
+linked_list.remove(1)
+assert linked_list.to_list() == [2, 1, 3, 4, 3], f"list contents: {linked_list.to_list()}"
+linked_list.remove(3)
+assert linked_list.to_list() == [2, 1, 4, 3], f"list contents: {linked_list.to_list()}"
+linked_list.remove(3)
+assert linked_list.to_list() == [2, 1, 4], f"list contents: {linked_list.to_list()}"
+
+# Test pop
+value = linked_list.pop()
+assert value == 2, f"list contents: {linked_list.to_list()}"
+assert linked_list.head.value == 1, f"list contents: {linked_list.to_list()}"
+
+# Test insert 
+linked_list.insert(5, 0)
+assert linked_list.to_list() == [5, 1, 4], f"list contents: {linked_list.to_list()}"
+linked_list.insert(2, 1)
+assert linked_list.to_list() == [5, 2, 1, 4], f"list contents: {linked_list.to_list()}"
+linked_list.insert(3, 6)
+assert linked_list.to_list() == [5, 2, 1, 4, 3], f"list contents: {linked_list.to_list()}"
+
+# Test size
+assert linked_list.size() == 5, f"list contents: {linked_list.to_list()}"
+
+print(linked_list)
+
+
+```
+
+# Reversing a linked list exercise
+Given a singly linked list, return another linked list that is the reverse of the first.
+
+```python
+
+# Solution
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
+        
+        node = self.head
+        while node.next:
+            node = node.next
+
+        node.next = Node(value)
+        
+    def __iter__(self):
+        node = self.head
+        while node:
+            yield node.value
+            node = node.next
+            
+    def __repr__(self):
+        return str([v for v in self])
+
+# Time complexity O(N)
+def reverse(linked_list):
+       
+    new_list = LinkedList()
+    node = linked_list.head
+    prev_node = None
+
+    # A bit of a complex operation here. We want to take the
+    # node from the original linked list and prepend it to 
+    # the new linked list
+    for value in linked_list:
+        new_node = Node(value)
+        new_node.next = prev_node
+        prev_node = new_node
+    new_list.head = prev_node
+    return new_list
+
+llist = LinkedList()
+for value in [4,2,5,1,-3,0]:
+    llist.append(value)
+
+flipped = reverse(llist)
+is_correct = list(flipped) == list([0,-3,1,5,2,4]) and list(llist) == list(reverse(flipped))
+print("Pass" if is_correct else "Fail")
+
+```
+
+![Loop](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/loops.PNG "Loop")
+
+
+```python
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        
+class LinkedList:
+    def __init__(self, init_list=None):
+        self.head = None
+        if init_list:
+            for value in init_list:
+                self.append(value)
+        
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
+        
+        # Move to the tail (the last node)
+        node = self.head
+        while node.next:
+            node = node.next
+        
+        node.next = Node(value)
+        return
+
+list_with_loop = LinkedList([2, -1, 3, 0, 5])
+
+# Creating a loop where the last node points back to the second node
+loop_start = list_with_loop.head.next
+
+node = list_with_loop.head
+while node.next: 
+    node = node.next 
+node.next = loop_start
+
+# Solution
+
+def iscircular(linked_list):
+    """
+    Determine wether the Linked List is circular or not
+
+    Args:
+       linked_list(obj): Linked List to be checked
+    Returns:
+       bool: Return True if the linked list is circular, return False otherwise
+    """
+
+    if linked_list.head is None:
+        return False
+    
+    slow = linked_list.head
+    fast = linked_list.head
+    
+    while fast and fast.next:
+        # slow pointer moves one node
+        slow = slow.next
+        # fast pointer moves two nodes
+        fast = fast.next.next
+        
+        if slow == fast:
+            return True
+    
+    # If we get to a node where fast doesn't have a next node or doesn't exist itself, 
+    # the list has an end and isn't circular
+    return False
+
+small_loop = LinkedList([0])
+small_loop.head.next = small_loop.head
+print ("Pass" if iscircular(list_with_loop) else "Fail")
+print ("Pass" if not iscircular(LinkedList([-4, 7, 2, 5, -1])) else "Fail")
+print ("Pass" if not iscircular(LinkedList([1])) else "Fail")
+print ("Pass" if iscircular(small_loop) else "Fail")
+print ("Pass" if not iscircular(LinkedList([])) else "Fail")
+
+```
+
+## Flattening a nested linked list
+Suppose you have a linked list where the value of each node is a sorted linked list (i.e., it is a nested list). Your task is to flatten this nested list—that is, to combine all nested lists into a single (sorted) linked list.
+
+```python
+
+# Use this class as the nodes in your linked list
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+    
+    def __repr__(self):
+        return str(self.value)
+    
+class LinkedList:
+    def __init__(self, head):
+        self.head = head
+        
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
+        node = self.head
+        while node.next is not None:
+            node = node.next
+        node.next = Node(value)
+
+def merge(list1, list2):
+    merged = LinkedList(None)
+    if list1 is None:
+        return list2
+    if list2 is None:
+        return list1
+    list1_elt = list1.head
+    list2_elt = list2.head
+    while list1_elt is not None or list2_elt is not None:
+        if list1_elt is None:
+            merged.append(list2_elt)
+            list2_elt = list2_elt.next
+        elif list2_elt is None:
+            merged.append(list1_elt)
+            list1_elt = list1_elt.next
+        elif list1_elt.value <= list2_elt.value:
+            merged.append(list1_elt)
+            list1_elt = list1_elt.next
+        else:
+            merged.append(list2_elt)
+            list2_elt = list2_elt.next
+    return merged
+
+linked_list = LinkedList(Node(1))
+linked_list.append(3)
+linked_list.append(5)
+
+second_linked_list = LinkedList(Node(2))
+second_linked_list.append(4)
+
+merged = merge(linked_list, second_linked_list)
+node = merged.head
+while node is not None:
+    #This will print 1 2 3 4 5
+    #print(node.value)
+    node = node.next
+    
+# Lets make sure it works with a None list
+merged = merge(None, linked_list)
+node = merged.head
+while node is not None:
+    #This will print 1 2 3 4 5
+    print(node.value)
+    node = node.next
+
+class NestedLinkedList(LinkedList):
+    def flatten(self):
+        return self._flatten(self.head)
+
+    def _flatten(self, node):
+        if node.next is None:
+            return merge(node.value, None)
+        return merge(node.value, self._flatten(node.next))
+
+nested_linked_list = NestedLinkedList(Node(linked_list))
+nested_linked_list.append(second_linked_list)
+flattened = nested_linked_list.flatten()
+
+node = flattened.head
+while node is not None:
+    #This will print 1 2 3 4 5
+    print(node.value)
+    node = node.next
+
+
+```
+
+![Computational Complexity](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/computational_complexity.PNG "Computational Complexity")
+
