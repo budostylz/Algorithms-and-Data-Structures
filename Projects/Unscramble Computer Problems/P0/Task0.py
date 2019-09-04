@@ -65,6 +65,7 @@ Print messages:
 "First record of texts, <incoming number> texts <answering number> at time <time>"
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
+#returns requirement output
 def getListData(texts, calls):
 
     

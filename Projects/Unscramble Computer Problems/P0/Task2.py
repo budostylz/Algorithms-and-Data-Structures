@@ -22,6 +22,7 @@ September 2016.".
 
 import datetime
 
+#returns September number list
 def getSeptemberDates(calls):
 
     septList = []
@@ -36,6 +37,7 @@ def getSeptemberDates(calls):
 
     return septList
 
+# returns Boolean for checking September dates
 def testSeptDate(dateStr):
 
    dayTest = int(dateStr.split('-')[0])
@@ -53,7 +55,7 @@ def testSeptDate(dateStr):
    else:
        return False
 
-
+# returns requirement output
 def getHighTime(sortedSeptemberList):
 
 

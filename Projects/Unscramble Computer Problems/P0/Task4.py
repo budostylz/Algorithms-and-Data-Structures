@@ -25,7 +25,7 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-
+#returns complete list of non repeating telemarket numbers
 def checkTelemarketNumbers(calls):
 
     telemarketList = []
@@ -36,6 +36,7 @@ def checkTelemarketNumbers(calls):
 
     return telemarketList
 
+#returns partial list of non repeating telemarket numbers
 def checkRepeats(incomingNumber, telemarketList):
 
     checkRepeats = False

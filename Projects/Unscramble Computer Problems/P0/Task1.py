@@ -19,7 +19,7 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 
 """
-
+# returns both texts and calls in one list
 def mergeTextsAndCalls(texts, calls):
 
     callTextList = []
@@ -32,6 +32,7 @@ def mergeTextsAndCalls(texts, calls):
         
     return callTextList
 
+# returns requirement output
 def countList(callTextList):
 
     
@@ -58,6 +59,7 @@ def countList(callTextList):
 
     return "There are "+count+" different telephone numbers in the records."
 
+# returns number type
 def getNumberType(number):
 
     numberLength = len(number)
@@ -70,7 +72,7 @@ def getNumberType(number):
         return 'fixed', 1
         
     
-
+#drivers
 callTextList = mergeTextsAndCalls(texts, calls)
 print(countList(callTextList))
 

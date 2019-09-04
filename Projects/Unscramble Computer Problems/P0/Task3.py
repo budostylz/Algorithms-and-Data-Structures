@@ -44,127 +44,18 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
-"""DESIGN
 
-    Outputs:
-        1. List of codes called by people in Bangalore with no duplicates
-        2. Percentage of fixed to fixed calls from and to Bangalore
-
-    Inputs:
-        1. Incoming Number
-        2. Answering Number
-      
-
-
-    Functions/Call Stack
-    
-        1. checkBangaloreAreaCodes
-            inputs: incoming number, list
-            outputs: bangaloreList, percentageOfFixedToFixed
-
-        2. setBangaloreAreaCodeList
-            inputs: incoming number, bangaloreList
-            outputs: bangaloreList
-        
-        3. outputAreaCodes
-            inputs: bangaloreList
-            outputs: "The numbers called by people in Bangalore have codes:"<list of codes>
-        
-
-
-
-
-Psuedocode:
-
-
-checkBangaloreAreaCodes;
-
-list = list;
-bangaloreList = bangaloreList;
-whole = 0;
-part = 0;
-percentage = 0;
-
-for(var i = 0; i < list.length; i++){
-  
-   var incomingNumber = list[i][0];
-   var answeringNumber = list[i][1];
-   
-   if((incomingNumber[0] === '0'  AND incomingNumber[1] === '8' AND incomingNumber[2] === '0') AND (answeringNumber[0] === '0'  AND answeringNumber[1] === '8' AND answeringNumber[2] === '0') )
-   { 
-          bangaloreList = setBangaloreAreaCodeList(incomingNumber, bangaloreList)
-          whole += 1;
-          part += 1;
-   
-   }
-  
-}
-percentage = (part/whole);
-percentageStr = "<percentage> percent of calls from fixed lines in Bangalore are calls
-to other fixed lines in Bangalore.";
-
-return bangaloreList, percentageStr;
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-setBangaloreAreaCodeList;
-
-incomingNumber = inComingNumber;
-bangaloreList = bangaloreList
-checkRepeats = false
-
-for(var i = 0; i < bangaloreList.length; i++){
-  
-    if(incomingNumber === bangaloreList[i]){
-        checkRepeats = true;
-    }
-  
-}
-
-if(checkRepeats === false){
-  bangaloreList.push(incomingNumber)
-}
-
-return bangaloreList;
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-outputAreaCodes;
-
-bangaloreList = bangaloreList;
-
-
-for(var i = 0; i < bangaloreList.length; i++){
-  
-  var code = bangaloreList[i];
-  var str = "The numbers called by people in Bangalore have codes:<code>"";
-  
-  return str;
-  
-  
-}
-
-
-
-
-"""
-
-
+# returns complete list of Bangalore numbers, part and whole percent values
 def checkBangaloreAreaCodes(calls):
 
     bangaloreList = []
     whole = 0
     part = 0
     count = 0
- 
-   
 
     
     for i, value in enumerate(calls):
-     
+
      incomingNumber =  str(value[0])
      answeringNumber = str(value[1])
 
@@ -184,7 +75,7 @@ def checkBangaloreAreaCodes(calls):
     
     return bangaloreList, part, whole
 
-
+#returns partial Bangalore list
 def setBangaloreAreaCodeList(incomingNumber, bangaloreList):
 
     checkRepeats = False
@@ -215,13 +106,14 @@ def bangaloreSort(bangaloreList):
 
     return bangaloreList
 
+ # returns output for requirement A
 def outputA(sortedCodes):
 
     for i, value in enumerate(sortedCodes):
         print( "The numbers called by people in Bangalore have codes:" + str(value))
         print('-------------------------------------')
 
-        
+# returns output for requirement B        
 def outputB(part, whole):
     #percentage =  [(fixedIncoming to (fixedAnswering)) / (fixedIncoming to (fixedAnswering + mobileAnswering + teleAnswering))] * 100
     rawPercent = str((part / whole) * 100)
