@@ -7,4 +7,26 @@ With recursion, we solve a problem by first solving smaller instances of the sam
 
 https://youtu.be/_aI2Jch6Epk
 
+## Call stack
+https://en.wikipedia.org/wiki/Call_stack
+
 ![Recursion](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Recursion/recursion.PNG "Recursion")
+
+```python
+
+def power_of_2(n):
+    if n == 0:
+        return 1
+    
+    return 2 * power_of_2(n - 1)
+
+print(power_of_2(5))
+
+
+```
+![Recursion2](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Recursion/recursion2.PNG "Recursion2")
+
+
+
+![Call Stack](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Recursion/callstack.PNG "Call Stack")
+
