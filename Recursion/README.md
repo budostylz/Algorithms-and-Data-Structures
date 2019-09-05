@@ -664,24 +664,34 @@ Let the time taken to execute the function print_integers(n) be 𝑇(𝑛). And 
 In that case, we can say that
 
 𝑇(𝑛)=𝑇(𝑛−1)+𝑘
+
 where 𝑇(𝑛−1) represents the time taken to execute the function print_integers(n - 1).
 
 Similarly, we can represent 𝑇(𝑛−1) as
 
 𝑇(𝑛−1)=𝑇(𝑛−2)+𝑘
+
 We can see that a pattern is being formed here:
 
 𝑇(𝑛)       =𝑇(𝑛−1)+𝑘
+
 𝑇(𝑛−1)=𝑇(𝑛−2)+𝑘
+
 𝑇(𝑛−2)=𝑇(𝑛−3)+𝑘
-𝑇(𝑛−3)=𝑇(𝑛−4)+𝑘 .
+
+𝑇(𝑛−3)=𝑇(𝑛−4)+𝑘
+
 .
 .
 .
 .
 .
+.
+
 𝑇(2)=𝑇(1)+𝑘
+
 𝑇(1)=𝑇(0)+𝑘
+
 𝑇(0)=𝑘1
 
 Notice that when n = 0 we are only checking the base case and then returning. This time can be represented by some other constant,  𝑘1 .
@@ -728,26 +738,37 @@ Similarly, in the next step, the time complexity of the function called with hal
 We can now form similar equations as we did for the last problem:
 
 𝑇(𝑛)   =𝑇(𝑛/2)+𝑘
+
 𝑇(𝑛/2)=𝑇(𝑛/4)+𝑘
+
 𝑇(𝑛/4)=𝑇(𝑛/8)+𝑘
-𝑇(𝑛/8)=𝑇(𝑛/16)+𝑘 .
+
+𝑇(𝑛/8)=𝑇(𝑛/16)+𝑘
+
+.
 .
 .
 .
 .
 .
 𝑇(4)=𝑇(2)+𝑘
+
 𝑇(2)=𝑇(1)+𝑘
+
 𝑇(1)=𝑇(0)+𝑘1 (1)
+
 𝑇(0)=𝑘1
+
 (1) If we have only one element, we go to 0 elements next
 
 From our binary search section, we know that it takes 𝑙𝑜𝑔(𝑛) steps to go from 𝑇(𝑛) to 1. Therefore, when we add the corresponding left-hand sides and right-hand sides, we can safely say that:
 
 𝑇(𝑛)=𝑙𝑜𝑔(𝑛)∗𝑘+𝑘1
+
 As always, we can ignore the constant. Therefore:
 
 𝑇(𝑛)=𝑙𝑜𝑔(𝑛)∗𝑘
+
 Thus we see that the time complexity of the function is a logarithmic function of the input, 𝑛. Hence, the time complexity of the recursive algorithm for binary search is 𝑙𝑜𝑔(𝑛).
 
 ```python
@@ -1071,5 +1092,130 @@ solution = [[],
 test_case = [arr, solution]
 test_function(test_case)
 
+
+```
+
+## Problem Statement
+Suppose there is a staircase that you can climb in either 1 step, 2 steps, or 3 steps. In how many possible ways can you climb the staircase if the staircase has n steps? Write a recursive function to solve the problem.
+
+Example:
+
+n = 3
+output = 4
+The output is 4 because there are four ways we can climb the staircase:
+
+1. 1 step +  1 step + 1 step
+2. 1 step + 2 steps 
+3. 2 steps + 1 step
+4. 3 steps
+
+```python
+
+# Solution
+## Read input as specified in the question.
+## Print output as specified in the question.
+
+
+def staircase(n):
+    if n <= 0:
+        return 1
+    
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    elif n == 3:
+        return 4
+    
+    return staircase(n - 1) + staircase(n - 2) + staircase(n - 3)
+
+def test_function(test_case):
+    n = test_case[0]
+    solution = test_case[1]
+    output = staircase(n)
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+
+n = 3
+solution = 4
+test_case = [n, solution]
+test_function(test_case)
+
+n = 4
+solution = 7
+test_case = [n, solution]
+test_function(test_case)
+
+n = 7
+solution = 44
+test_case = [n, solution]
+test_function(test_case)
+
+
+```
+
+## Problem statement
+Given an array arr and a target element target, find the last index of occurence of target in arr using recursion. If target is not present in arr, return -1.
+
+For example:
+
+For arr = [1, 2, 5, 5, 4] and target = 5, output = 3
+
+For arr = [1, 2, 5, 5, 4] and target = 7, output = -1
+
+```python
+
+# Solution
+def last_index(arr, target):
+    # we start looking from the last index
+    return last_index_arr(arr, target, len(arr) - 1)
+
+
+def last_index_arr(arr, target, index):
+    if index < 0:
+        return -1
+    
+    # check if target is found
+    if arr[index] == target:
+        return index
+
+    # else make a recursive call to the rest of the array
+    return last_index_arr(arr, target, index - 1)
+
+def test_function(test_case):
+    arr = test_case[0]
+    target = test_case[1]
+    solution = test_case[2]
+    output = last_index(arr, target)
+    if output == solution:
+        print("Pass")
+    else:
+        print("False")
+
+arr = [1, 2, 5, 5, 4]
+target = 5
+solution = 3
+test_case = [arr, target, solution]
+test_function(test_case)
+
+arr = [1, 2, 5, 5, 4]
+target = 7
+solution = -1
+test_case = [arr, target, solution]
+test_function(test_case)
+
+arr = [91, 19, 3, 8, 9]
+target = 91
+solution = 0
+test_case = [arr, target, solution]
+test_function(test_case)
+
+arr = [1, 1, 1, 1, 1, 1]
+target = 1
+solution = 5
+test_case = [arr, target, solution]
+test_function(test_case)
 
 ```
