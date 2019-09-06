@@ -28,6 +28,9 @@ https://youtu.be/J_fJHvf29b4
 
 ## Create a Binary Tree
 
+![Binary Tree](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Trees/binarytree.PNG "Binary Tree")
+
+
 ```python
 
 ## Define a node
