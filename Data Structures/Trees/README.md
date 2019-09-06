@@ -884,5 +884,528 @@ print( bfs(tree) )
 ## Binary Search Tree Intro
 https://youtu.be/C_2akqGHlsc
 
+![BST](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Trees/bst.PNG "BST")
+
+## Tree Setup
+https://youtu.be/gbGFK5REl6g
+
+## Insertion
+https://youtu.be/SX0ThwOx-gE
+
+## Insertion Code Intro
+https://youtu.be/omrmXwZ5IKQ
+
+## Insertion Code Solution
+https://youtu.be/HTwhOLuIUBg
+
+## Search
+https://youtu.be/-SWRLeI08xU
+
+## Search Code Intro
+https://youtu.be/V4T6qDj7c8s
+
+## Search Code Solution
+https://youtu.be/vMtQdLTmu-E
+
+## Delete
+https://youtu.be/fJlWvaqqeZg
+
+```python
+
+from collections import deque
+class Queue():
+    def __init__(self):
+        self.q = deque()
+        
+    def enq(self,value):
+        self.q.appendleft(value)
+        
+    def deq(self):
+        if len(self.q) > 0:
+            return self.q.pop()
+        else:
+            return None
+    
+    def __len__(self):
+        return len(self.q)
+    
+    def __repr__(self):
+        if len(self.q) > 0:
+            s = "<enqueue here>\n_________________\n" 
+            s += "\n_________________\n".join([str(item) for item in self.q])
+            s += "\n_________________\n<dequeue here>"
+            return s
+        else:
+            return "<queue is empty>"
+
+
+# this code makes the tree that we'll traverse
+class Node(object):
+        
+    def __init__(self,value = None):
+        self.value = value
+        self.left = None
+        self.right = None
+        
+    def set_value(self,value):
+        self.value = value
+        
+    def get_value(self):
+        return self.value
+        
+    def set_left_child(self,left):
+        self.left = left
+        
+    def set_right_child(self, right):
+        self.right = right
+        
+    def get_left_child(self):
+        return self.left
+    
+    def get_right_child(self):
+        return self.right
+
+    def has_left_child(self):
+        return self.left != None
+    
+    def has_right_child(self):
+        return self.right != None
+    
+    # define __repr_ to decide what a print statement displays for a Node object
+    def __repr__(self):
+        return f"Node({self.get_value()})"
+    
+    def __str__(self):
+        return f"Node({self.get_value()})"
+
+class Tree():
+    def __init__(self):
+        self.root = None
+        
+    def set_root(self,value):
+        self.root = Node(value)
+        
+    def get_root(self):
+        return self.root
+    
+    def compare(self,node, new_node):
+        """
+        0 means new_node equals node
+        -1 means new node less than existing node
+        1 means new node greater than existing node 
+        """
+        if new_node.get_value() == node.get_value():
+            return 0
+        elif new_node.get_value() < node.get_value():
+            return -1
+        else:
+            return 1
+    
+    """
+    define insert here
+    can use a for loop (try one or both ways)
+    """
+    def insert_with_loop(self,new_value):
+        new_node = Node(new_value)
+        node = self.get_root()
+        if node == None:
+            self.root = new_node
+            return
+
+        while(True):
+            comparison = self.compare(node, new_node)
+            if comparison == 0:
+                # override with new node's value
+                node.set_value(new_node.get_value())
+                break # override node, and stop looping
+            elif comparison == -1:
+                # go left
+                if node.has_left_child():
+                    node = node.get_left_child()
+                else:
+                    node.set_left_child(new_node)
+                    break #inserted node, so stop looping
+            else: #comparison ==1
+                # go right
+                if node.has_right_child():
+                    node = node.get_right_child()
+                else:
+                    node.set_right_child(new_node)
+                    break # inserted node, so stop looping
+
+
+    """
+    define insert here (can use recursion)
+    try one or both ways
+    """  
+    def insert_with_recursion(self,value):
+        
+        if self.get_root() == None:
+            self.set_root(value)
+            return
+        #otherwise, use recursion to insert the node
+        self.insert_recursively(self.get_root(), Node(value))
+
+    def insert_recursively(self,node,new_node):
+        comparison = self.compare(node,new_node)
+        if comparison == 0:
+            # equal
+            node.set_value(new_node.get_value())
+        elif comparison == -1:
+            # traverse left
+            if node.has_left_child():
+                self.insert_recursively(node.get_left_child(),new_node)
+            else:
+                node.set_left_child(new_node)
+        else: #comparison == 1
+            # traverse right
+            if node.has_right_child():
+                self.insert_recursively(node.get_right_child, new_node)
+            else:
+                node.set_right_child(new_node)
+        
+    def search(self,value):
+        node = self.get_root()
+        s_node = Node(value)
+        while(True):
+            comparison = self.compare(node, s_node)
+            if comparison == 0:
+                return True
+            elif comparison == -1:
+                if node.has_left_child():
+                    node = node.get_left_child()
+                else:
+                    return False
+            else:
+                if node.has_right_child():
+                    node = node.get_right_child()
+                else:
+                    return False
+
+
+    def __repr__(self):
+        level = 0
+        q = Queue()
+        visit_order = list()
+        node = self.get_root()
+        q.enq( (node,level) )
+        while(len(q) > 0):
+            node, level = q.deq()
+            if node == None:
+                visit_order.append( ("<empty>", level))
+                continue
+            visit_order.append( (node, level) )
+            if node.has_left_child():
+                q.enq( (node.get_left_child(), level +1 ))
+            else:
+                q.enq( (None, level +1) )
+
+            if node.has_right_child():
+                q.enq( (node.get_right_child(), level +1 ))
+            else:
+                q.enq( (None, level +1) )
+
+        s = "Tree\n"
+        previous_level = -1
+        for i in range(len(visit_order)):
+            node, level = visit_order[i]
+            if level == previous_level:
+                s += " | " + str(node) 
+            else:
+                s += "\n" + str(node)
+                previous_level = level
+
+                
+        return s
+
+
+tree = Tree()
+tree.insert_with_loop(5)
+tree.insert_with_loop(6)
+tree.insert_with_loop(4)
+tree.insert_with_loop(2)
+tree.insert_with_loop(5) # insert duplicate
+print(tree)
+
+
+tree = Tree()
+tree.insert_with_recursion(5)
+tree.insert_with_recursion(6)
+tree.insert_with_recursion(4)
+tree.insert_with_recursion(2)
+tree.insert_with_recursion(5) # insert duplicate
+print(tree)
+
+print(f"""
+search for 8: {tree.search(8)}
+search for 2: {tree.search(2)}
+
+""")
+
+
+```
+
+![Diameter of Binary Tree](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Trees/diameter.PNG "Diameter of Binary Tree")
+
+![Diameter of Binary Tree](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Trees/diameter2.PNG "Diameter of Binary Tree")
+
+```python
+
+class BinaryTreeNode:
+
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+
+        from queue import Queue
+
+from queue import Queue
+
+def convert_arr_to_binary_tree(arr):
+    """
+    Takes arr representing level-order traversal of Binary Tree 
+    """
+    index = 0
+    length = len(arr)
+    
+    if length <= 0 or arr[0] == -1:
+        return None
+
+    root = BinaryTreeNode(arr[index])
+    index += 1
+    queue = Queue()
+    queue.put(root)
+    
+    while not queue.empty():
+        current_node = queue.get()
+        left_child = arr[index]
+        index += 1
+        
+        if left_child is not None:
+            left_node = BinaryTreeNode(left_child)
+            current_node.left = left_node
+            queue.put(left_node)
+        
+        right_child = arr[index]
+        index += 1
+        
+        if right_child is not None:
+            right_node = BinaryTreeNode(right_child)
+            current_node.right = right_node
+            queue.put(right_node)
+    return root
+
+    
+    
+
+def convert_arr_to_binary_tree(arr):
+    """
+    Takes arr representing level-order traversal of Binary Tree 
+    """
+    index = 0
+    length = len(arr)
+    
+    if length <= 0 or arr[0] == -1:
+        return None
+
+    root = BinaryTreeNode(arr[index])
+    index += 1
+    queue = Queue()
+    queue.put(root)
+    
+    while not queue.empty():
+        current_node = queue.get()
+        left_child = arr[index]
+        index += 1
+        
+        if left_child is not None:
+            left_node = BinaryTreeNode(left_child)
+            current_node.left = left_node
+            queue.put(left_node)
+        
+        right_child = arr[index]
+        index += 1
+        
+        if right_child is not None:
+            right_node = BinaryTreeNode(right_child)
+            current_node.right = right_node
+            queue.put(right_node)
+    return root
+
+
+# Solution
+def diameter_of_binary_tree(root):
+    return diameter_of_binary_tree_func(root)[1]
+    
+def diameter_of_binary_tree_func(root):
+    """
+    Diameter for a particular BinaryTree Node will be:
+        1. Either diameter of left subtree
+        2. Or diameter of a right subtree
+        3. Sum of left-height and right-height
+    :param root:
+    :return: [height, diameter]
+    """
+    if root is None:
+        return 0, 0
+
+    left_height, left_diameter = diameter_of_binary_tree_func(root.left)
+    right_height, right_diameter = diameter_of_binary_tree_func(root.right)
+
+    current_height = max(left_height, right_height) + 1
+    height_diameter = left_height + right_height
+    current_diameter = max(left_diameter, right_diameter, height_diameter)
+
+    return current_height, current_diameter
+
+def test_function(test_case):
+    arr = test_case[0]
+    solution = test_case[1]
+    root = convert_arr_to_binary_tree(arr)
+    output = diameter_of_binary_tree(root)
+    print(output)
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+
+arr = [1, 2, 3, 4, 5, None, None, None, None, None, None]
+solution = 3
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [1, 2, 3, 4, None, 5, None, None, None, None, None]
+solution = 4
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [1, 2, 3, None, None, 4, 5, 6, None, 7, 8, 9, 10, None, None, None, None, None, None, 11, None, None, None]
+solution = 6
+test_case = [arr, solution]
+test_function(test_case)
+
+
+```
+
+![Root to Node](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Trees/root_to_node.PNG "Root to Node")
+
+
+
+```python
+
+class BinaryTreeNode:
+
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+from queue import Queue
+
+def convert_arr_to_binary_tree(arr):
+    """
+    Takes arr representing level-order traversal of Binary Tree 
+    """
+    index = 0
+    length = len(arr)
+    
+    if length <= 0 or arr[0] == -1:
+        return None
+
+    root = BinaryTreeNode(arr[index])
+    index += 1
+    queue = Queue()
+    queue.put(root)
+    
+    while not queue.empty():
+        current_node = queue.get()
+        left_child = arr[index]
+        index += 1
+        
+        if left_child is not None:
+            left_node = BinaryTreeNode(left_child)
+            current_node.left = left_node
+            queue.put(left_node)
+        
+        right_child = arr[index]
+        index += 1
+        
+        if right_child is not None:
+            right_node = BinaryTreeNode(right_child)
+            current_node.right = right_node
+            queue.put(right_node)
+    return root
+
+    
+ # Solution
+def path_from_root_to_node(root, data):
+    """
+    Assuming data as input to find the node
+    The solution can be easily changed to find a node instead of data
+    :param data:
+    :return:
+    """
+    output = path_from_node_to_root(root, data)
+    return list(reversed(output))
+
+def path_from_node_to_root(root, data):
+    if root is None:
+        return None
+
+    elif root.data == data:
+        return [data]
+
+    left_answer = path_from_node_to_root(root.left, data)
+    if left_answer is not None:
+        left_answer.append(root.data)
+        return left_answer
+
+    right_answer = path_from_node_to_root(root.right, data)
+    if right_answer is not None:
+        right_answer.append(root.data)
+        return right_answer
+    return None
+  
+def test_function(test_case):
+    arr = test_case[0]
+    data = test_case[1]
+    solution = test_case[2]
+    root = convert_arr_to_binary_tree(arr)
+    output = path_from_root_to_node(root, data)
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+
+arr = [1, 2, 3, 4, 5, None, None, None, None, None, None]
+data = 5
+solution = [1, 2, 5]
+test_case = [arr, data, solution]
+test_function(test_case)
+
+arr = [1, 2, 3, 4, None, 5, None, None, None, None, None]
+data = 5
+solution = [1, 3, 5]
+test_case = [arr, data, solution]
+test_function(test_case)
+
+arr = [1, 2, 3, None, None, 4, 5, 6, None, 7, 8, 9, 10, None, None, None, None, None, None, 11, None, None, None]
+data = 11
+solution = [1, 3, 4, 6, 10, 11]
+test_case = [arr, data, solution]
+test_function(test_case)
+
+arr = [1, 2, 3, None, None, 4, 5, 6, None, 7, 8, 9, 10, None, None, None, None, None, None, 11, None, None, None]
+data = 8
+solution = [1, 3, 5,8]
+test_case = [arr, data, solution]
+test_function(test_case)
+
+
+```
+
+
 
 
