@@ -128,6 +128,7 @@ https://youtu.be/ayuX5T-F-Hc
 
 ## DFS implementation with a Bug
 Let's look at a common error, an infinite loop, and explain why this is happening.
+
 https://youtu.be/oeEhpPGYRw8
 
 ## Tracking Additional Information in the Stack
