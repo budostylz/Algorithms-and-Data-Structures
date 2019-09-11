@@ -206,5 +206,5 @@ print(hash_code_1)
 
 ```
 
-![Hash Functions for Strings](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Arrays%20and%20Linked%20Lists/hash_functions_for_strings.PNG "Hash Functions for Strings")
+![Hash Functions for Strings](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Maps%20and%20Hasing/hash_functions_for_strings.PNG "Hash Functions for Strings")
 
