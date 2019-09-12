@@ -110,3 +110,27 @@ https://youtu.be/7WbRB7dSyvc
 
 ![Binary Search](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarysearch_result_table.PNG "Binary Search")
 
+![Binary Search Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchMath1.PNG "Binary Search Math")
+
+![Binary Search Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchMath2.PNG "Binary Search Math")
+
+![Binary Search Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchMath3.PNG "Binary Search Math")
+
+![Binary Search Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchMath4.PNG "Binary Search Math")
+
+![Binary Search Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchMath5.PNG "Binary Search Math")
+
+![Binary Search Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchMath6.PNG "Binary Search Math")
+
+![Binary Search Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchComplexity.PNG "Binary Search Math")
+
+
+
+
+
+
+
+
+
+
+
