@@ -1227,6 +1227,18 @@ print('Call is_empty: {}'.format(heap.is_empty()))
 
 ```
 
+## Self-Balancing Trees
+https://youtu.be/EHI548K3jiw
+
+
+## Red-Black Tree Insertion
+https://youtu.be/dIuWLtWnkgs
+
+## Tree Rotations
+https://youtu.be/O5Yl-m0YbVA
+
+
+
 
 
 
