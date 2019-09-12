@@ -124,7 +124,220 @@ https://youtu.be/7WbRB7dSyvc
 
 ![Binary Search Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchComplexity.PNG "Binary Search Math")
 
+# Binary search practice
+Let's get some practice doing binary search on an array of integers. We'll solve the problem two different ways—both iteratively and resursively.
 
+Here is a reminder of how the algorithm works:
+
+1. Find the center of the list (try setting an upper and lower bound to find the center)
+2. Check to see if the element at the center is your target.
+3. If it is, return the index.
+4. If not, is the target greater or less than that element?
+5. If greater, move the lower bound to just above the current center
+6. If less, move the upper bound to just below the current center
+7. Repeat steps 1-6 until you find the target or until the bounds are the same or cross (the upper bound is less than the lower bound).
+
+## Problem statement:
+Given a sorted array of integers, and a target value, find the index of the target value in the array. If the target value is not present in the array, return -1.
+
+## Iterative solution
+First, see if you can code an iterative solution (i.e., one that uses loops). If you get stuck, the solution is below.
+
+## Iterative solution
+
+```python
+
+def binary_search(array, target):
+    start_index = 0
+    end_index = len(array) - 1
+    
+    while start_index <= end_index:
+        mid_index = (start_index + end_index)//2        # integer division in Python 3
+        
+        mid_element = array[mid_index]
+        
+        if target == mid_element:                       # we have found the element
+            return mid_index
+        
+        elif target < mid_element:                      # the target is less than mid element
+            end_index = mid_index - 1                   # we will only search in the left half
+        
+        else:                                           # the target is greater than mid element
+            start_index = mid_element + 1               # we will search only in the right half
+    
+    return -1
+
+def test_function(test_case):
+    answer = binary_search(test_case[0], test_case[1])
+    if answer == test_case[2]:
+        print("Pass!")
+    else:
+        print("Fail!")
+
+array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+target = 6
+index = 6
+test_case = [array, target, index]
+test_function(test_case)
+
+
+```
+
+## Recursive Solution(Needs Debugging)
+
+```python
+
+def binary_search_recursive(array, target, start_index, end_index):
+    '''Write a function that implements the binary search algorithm using recursion
+    
+    args:
+      array: a sorted array of items of the same type
+      target: the element you're searching for
+         
+    returns:
+      int: the index of the target, if found, in the source
+      -1: if the target is not found
+    '''
+    return binary_search_recursive_soln(array, target, 0, len(array) - 1)
+
+def binary_search_recursive_soln(array, target, start_index, end_index):
+    if start_index > end_index:
+        return -1
+    
+    mid_index = (start_index + end_index)//2
+    mid_element = array[mid_index]
+    
+    if mid_element == target:
+        return mid_index
+    elif target < mid_element:
+        return binary_search_recursive_soln(array, target, start_index, mid_index - 1)
+    else:
+        return binary_search_recursive_soln(array, target, mid_index + 1, end_index)
+        
+def test_function(test_case):
+    answer = binary_search_recursive(test_case[0], test_case[1])
+    if answer == test_case[2]:
+        print("Pass!")
+    else:
+        print("Fail!")
+
+array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+target = 4
+index = 4
+test_case = [array, target, index]
+test_function(test_case)
+
+
+```
+
+# Variations on Binary Search
+Now that you've gone through the work of building a binary search function, let's take some time to try out a few exercises that are variations (or extensions) of binary search. We'll provide the function for you to start:
+
+## Find First
+The binary search function is guaranteed to return an index for the element you're looking for in an array, but what if the element appears more than once?
+
+Consider this array:
+
+[1, 3, 5, 7, 7, 7, 8, 11, 12]
+
+Let's find the number 7:
+
+Hmm...
+Looks like we got the index 4, which is correct, but what if we wanted to find the first occurrence of an element, rather than just any occurrence?
+
+Write a new function: find_first() that uses binary_search as a starting point.
+
+Hint: You shouldn't need to modify binary_search() at all.
+
+```python
+
+def recursive_binary_search(target, source, left=0):
+    if len(source) == 0:
+        return None
+    center = (len(source)-1) // 2
+    if source[center] == target:
+        return center + left
+    elif source[center] < target:
+        return recursive_binary_search(target, source[center+1:], left+center+1)
+    else:
+        return recursive_binary_search(target, source[:center], left)
+
+def find_first(target, source):
+    index = recursive_binary_search(target, source)
+    if not index:
+        return None
+    while source[index] == target:
+        if index == 0:
+            return 0
+        if source[index-1] == target:
+            index -= 1
+        else:
+            return index
+
+multiple = [1, 3, 5, 7, 7, 7, 8, 11, 12, 13, 14, 15]
+print(find_first(7, multiple)) # Should return 3
+print(find_first(9, multiple)) # Should return None
+
+
+```
+
+## Contains
+The second variation is a function that returns a boolean value indicating whether an element is present, but with no information about the location of that element.
+
+For example:
+
+letters = ['a', 'c', 'd', 'f', 'g']
+print(contains('a', letters)) ## True
+print(contains('b', letters)) ## False
+There are a few different ways to approach this, so try it out, and we'll share two solutions after.
+
+
+![Binary Search Spoiler](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarySearchSpoiler.PNG "Binary Search Spoiler")
+
+```python
+
+def recursive_binary_search(target, source, left=0):
+    if len(source) == 0:
+        return None
+    center = (len(source)-1) // 2
+    if source[center] == target:
+        return center + left
+    elif source[center] < target:
+        return recursive_binary_search(target, source[center+1:], left+center+1)
+    else:
+        return recursive_binary_search(target, source[:center], left)
+
+
+"""
+# Loose wrapper for recursive binary search, returning True if the index is found and False if not
+def contains(target, source):
+    return recursive_binary_search(target, source) is not None
+
+letters = ['a', 'c', 'd', 'f', 'g']
+print(contains('a', letters)) ## True
+print(contains('b', letters)) ## False
+
+"""
+
+# Native implementation of binary search in the `contains` function.
+def contains(target, source):
+    if len(source) == 0:
+        return False
+    center = (len(source)-1) // 2
+    if source[center] == target:
+        return True
+    elif source[center] < target:
+        return contains(target, source[center+1:])
+    else:
+        return contains(target, source[:center])
+
+letters = ['a', 'c', 'd', 'f', 'g']
+print(contains('c', letters)) ## True
+print(contains('b', letters)) ## False
+
+
+
+```
 
 
 
