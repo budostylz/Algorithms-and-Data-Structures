@@ -839,6 +839,113 @@ However, if we visualize them in the following way, can we find some similaritie
 
 ![Complete Binary Trees Using Arrays](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/array2.PNG "Complete Binary Trees Using Arrays")
 
+Let's think about it.
+
+* In a complete binary tree, it is mandatory for all levels before the last level to be completely filled.
+
+If we visualize our array in this manner, do we satisfy this property of a CBT? All we have to ensure is that we put elements in array indices sequenially i.e. the smaller index first and the larger index next. If we do that, we can be assured that all levels before the last level will be completely filled.
+
+* In a CBT, if the last level is not completely filled, the nodes must be filled from left to right.
+
+Again, if we put elements in the array indices sequentially, from smaller index to larger index, we can be assured that if the last level is not filled, it will certainly be filled from left to right.
+
+Now let's talk about insert and remove operation in a heap. We will create our heap class which with these two operations. We also add a few utility methods for our convenience. Finally, because we know we are going to use arrays to create our heaps, we will also initialize an array.
+
+Note that we are creating min heaps for now. The max heap will follow the exact some process. The only difference arises in the Heap Order Property.
+
+As always we will use Python lists like C-style arrays to make the implementation as language agnostic as possible.
+
+```python
+
+class Heap:
+    def __init__(self, initial_size):
+        self.cbt = [None for _ in range(initial_size)]        # initialize arrays
+        self.next_index = 0                                   # denotes next index where new element should go
+        
+    def insert(self, data):
+        pass
+    
+    def remove(self):
+        pass
+
+```
+
+## Insert
+Insertion operation in a CBT is quite simple. Because we are using arrays to implement a CBT, we will always insert at the next_index. Also, after inserting, we will increment the value of next_index.
+
+However, this isn't enough. We also have to maintain the heap order property. We know that for min-heaps, the parent node is supposed to be smaller than both the child nodes.
+
+![Heap](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/heap1.PNG "Heap")
+
+Counting indices, we know that our next element should go at index 8. Let's say we want to insert 15 as our next element in the heap. In that case, we start off by inserting 15 at index 8.
+
+![Heap](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/heap2.PNG "Heap")
+
+Remember, although we are using arrays to implement a CBT, we will always visualize it as a binary tree. We will only consider them as arrays while implementing them.
+
+So, we went ahead and insert 15 at index 8. But this violates our heap order property. We are considering min-heap and the parent node of 15 is larger.
+
+In such a case, we heapify. We consider the parent node of the node we inserted and compare their values. In case of min-heaps, if the parent node is larger than the child node (the one we just inserted), we swap the nodes.
+
+Now the complete binary tree looks something like
+
+![Heap](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/heap3.PNG "Heap")
+
+Is the problem solved?
+
+Swapping the nodes for 15 and 50 certainly solved our problem. But it also introduced a new problem. Notice 15 and 20. We are again in the same spot. The parent node is larger than the child node. And in a min-heap we cannot allow that. So, what do we do? We heapify. We swap these two nodes just as we swapped our previous two nodes.
+
+After swapping, our CBT looks like
+
+Does everything seem fine now?
+
+We only have to consider the nodes that we swapped. And looks like we are fine.
+
+Now let's take a step back and see what we did.
+
+* We first inserted our element at the possible index.
+
+* Then we compared this element with the parent element and swapped them after finding that our child node was smaller than our parent node. And we did this process again. While writing code, we will continue this process until we find a parent which is smaller than the child node. Because we are travering the tree upwards while heapifying, this particular process is more accurately called up-heapify.
+
+Thus our insert method is actually done in two steps:
+
+* insert
+* up-heapify
+
+## Time Complexity
+Before talking about the implementation of insert, let's talk about the time complexity of the insert method.
+
+* Putting an element at a particular index in an array takes O(1) time.
+* However, in case of heapify, in the worst case we may have to travel from the node that we inserted right to the root node (placed at 0th index in the array). This would take O(h) time. In other words, this would be an O(log(n)) operation.
+
+Thus the time complexity of insert would be O(log(n)).
+
+## Insert - implementation
+Although we are using arrays for our CBT, we are visualizing it as a binary tree for understanding the idea. But when it comes to the implementation, we will have to think about it as an array. It is an array, after all.
+
+![Complete Binary Trees Using Arrays](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/array2.PNG "Complete Binary Trees Using Arrays")
+
+In the above image, we can safely assume that
+
+* index 0 is the root node of the binary tree
+* index 0 is the parent node for indices 1 and 2 i.e. 1 is the left node of index 0, and 2 is the right node
+* Similarly, 3 and 4 are the child nodes of index 1.
+* And 5 and 6 are the child nodes of index 2
+
+Can we deduce any pattern from this?
+
+* If you notice carefully, the child nodes of 0 are ---> 1 and 2
+* The child nodes of 1 are ---> 3 and 4
+* The child nodes of 2 are ---> 5 and 6
+
+![Get Child Nodes Given Parent](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/GetChildNodesGivenParent.PNG "Get Child Nodes Given Parent")
+
+
+
+
+
+
+
 
 
 
