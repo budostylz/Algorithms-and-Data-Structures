@@ -940,6 +940,9 @@ Can we deduce any pattern from this?
 
 ![Get Child Nodes Given Parent](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/GetChildNodesGivenParent.PNG "Get Child Nodes Given Parent")
 
+![Get Child Nodes Given Parent](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/GetParentNodeGivenChildNode.PNG "Get Child Nodes Given Parent")
+
+
 
 
 
