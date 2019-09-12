@@ -106,10 +106,7 @@ Check out the video below to get the gist, and then we'll walk through the proce
 https://youtu.be/7WbRB7dSyvc
 
 
-
-
-
-
-
-
 ![Binary Search](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarysearch1.PNG "Binary Search")
+
+![Binary Search](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarysearch_result_table.PNG "Binary Search")
+
