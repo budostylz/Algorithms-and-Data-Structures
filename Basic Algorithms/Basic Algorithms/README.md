@@ -791,6 +791,23 @@ If we have to insert one more node, where should the next node go? Because A. is
 
 ![Complete Binary Trees](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/completebinarytree4.PNG "Complete Binary Trees")
 
+Similarly, let's look back A. again. If we have to delete a node from A., which node should we delete? Again, to ensure that our tree remains a complete binary tree even after deleting a node, we can only remove 9.
+
+Thus, we know which node to remove and where to insert a new node. Notice that both of these operations do not depend upon values of other nodes. Rather, both insert and remove operations on a complete binary tree depend upon the position of the last inserted node.
+
+## Non-Linear Inequalities
+https://github.com/budostylz/Mathematics/tree/master/Algebra-PreCal/Intermediate%20Algebra/Non-Linear%20Inequalities
+
+![Heap Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/heapmath2.PNG "Heap Math")
+
+
+![Heap Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/heapmath.PNG "Heap Math")
+
+
+
+
+
+
 
 
 
