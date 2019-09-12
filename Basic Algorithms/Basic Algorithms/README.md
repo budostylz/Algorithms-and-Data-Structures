@@ -105,13 +105,11 @@ Check out the video below to get the gist, and then we'll walk through the proce
 
 https://youtu.be/7WbRB7dSyvc
 
-As Brynn said in the video, we can approximate the efficiency of binary search by answering this question: How many steps do we have to take in the worst-case scenario?
-
-At each step, we check the middle element—and then we can rule out about half of the numbers (discarding everything to either the left or right). So if we start with nn numbers, then after the first step we will have half that many, or n/2 left that we still need to check.
 
 
 
 
 
 
-![Hash Functions for Strings](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Data%20Structures/Maps%20and%20Hasing/hash_functions_for_strings.PNG "Hash Functions for Strings")
+
+![Binary Search](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/binarysearch1.PNG "Binary Search")
