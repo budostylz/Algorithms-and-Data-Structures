@@ -803,6 +803,28 @@ https://github.com/budostylz/Mathematics/tree/master/Algebra-PreCal/Intermediate
 
 ![Heap Math](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/heapmath.PNG "Heap Math")
 
+## Heaps for Priority Queues
+Let's take a step back and reflect on what we have done.
+
+1. We have examined popular data structures and observed their time complexities.
+2. We have looked at a new data structure called Heap
+3. We know that Heaps have two properties -
+ i. CBT 
+ ii. Heap Order Property
+4. We have looked at what CBT is and what Heap Order Property is
+By now, it must have been clear to you that we are going to use Heaps to create our Priority Queues. But are you convinced that heaps are a good structure to create Priority Queues?
+
+Ans.
+
+1. Other than Binary Search trees, all other popular data structures seemed to have a time complexity of O(n) for both insertion and removal.
+
+2. Binary Search Trees seemed like an effective data structure with average case time complexity of O(log(n) (or O(h)) for both the operations. However, in the worst case, a Binary Search Tree may not be balanced and instead behave like a linked list. In such a case, the time complexity in terms of height would still be O(h) but because the height of the binary search tree will be equal to the number of elements in the tree, the actual time complexity in terms of number of elements n would be O(n).
+
+3. The CBT property of Heaps ensures that the tree is always balanced. Therefore, the height h of the tree will always be equal to log(n).
+
+4. The Heap Order Property ensures that there is some definite structure to our Complete Binary Tree with respect to the value of the elements. In case of a min-heap, the minimum element will always lie at the root node. Similarly, in case of a maxp-heap, the maximum element will always lie at the root node. In both the cases, every time we insert or remove an element, the time complexity remains O(log(n)).
+
+Therefore, because of the time complexity being O(log(n)), we prefer heaps over other popular data structures to create our Priority Queues.
 
 
 
