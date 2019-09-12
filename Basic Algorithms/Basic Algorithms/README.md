@@ -643,6 +643,22 @@ print('All tests passed!')
 
 The Trie data structure is part of the family of Tree data structures. It shines when dealing with sequence data, whether it's characters, words, or network nodes. When working on a problem with sequence data, ask yourself if a Trie is right for the job.
 
+# Heaps
+https://youtu.be/M3B0UJWS_ag
+
+## Heapify
+https://youtu.be/CAbDbiCfERY
+
+## Heap Implementation
+https://youtu.be/2LAdml6_pDY
+
+# Priority Queues - Intuition
+Consider the following scenario -
+
+A doctor is working in an emergency wing at a hospital. When patients come in, a nurse checks their symptoms and based on the severity of the illness, sends them to the doctor. For e.g. a guy who has had an accident is sent before someone who has come with a runny nose. But there is a slight problem. There is only one nurse and only one doctor. In the amount of time nurse takes to check the symptoms, the doctor has to work alone with the patients, hurting their overall productivity.
+
+You are a ninja programmer. The doctor comes to you for help. Your job is to write a small software in which patients will enter their symptoms and will receive a priority number based on their illness. The doctor has given you a list of common ailments, and the priority in which he would prefer seeing them. How would you solve the priority problem?
+
 
 
 
