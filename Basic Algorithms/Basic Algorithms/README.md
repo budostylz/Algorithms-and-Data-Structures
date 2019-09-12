@@ -339,6 +339,311 @@ print(contains('b', letters)) ## False
 
 ```
 
+## Problem statement
+Given a sorted array that may have duplicate values, use binary search to find the first and last indexes of a given value.
+
+For example, if you have the array [0, 1, 2, 2, 3, 3, 3, 4, 5, 6] and the given value is 3, the answer will be [4, 6] (because the value 3 occurs first at index 4 and last at index 6 in the array).
+
+The expected complexity of the problem is  𝑂(𝑙𝑜𝑔(𝑛)) .
+
+```python
+
+def first_and_last_index(arr, number):
+    # search first occurence
+    first_index = find_start_index(arr, number, 0, len(arr) - 1)
+    
+    # search last occurence
+    last_index =  find_end_index(arr, number, 0, len(arr) - 1)
+    return [first_index, last_index]
+
+
+def find_start_index(arr, number, start_index, end_index):
+    # binary search solution to search for the first index of the array
+    if start_index > end_index:
+        return -1
+
+    mid_index = start_index + (end_index - start_index)//2
+
+    if arr[mid_index] == number:
+        current_start_pos = find_start_index(arr, number, start_index, mid_index - 1)
+        if current_start_pos != -1:
+            start_pos = current_start_pos
+        else:
+            start_pos = mid_index
+        return start_pos
+
+    elif arr[mid_index] < number:
+        return find_start_index(arr, number, mid_index + 1, end_index)
+    else:
+        return find_start_index(arr, number, start_index, mid_index - 1)
+
+
+def find_end_index(arr, number, start_index, end_index):
+    # binary search solution to search for the last index of the array
+    if start_index > end_index:
+        return  -1
+
+    mid_index = start_index + (end_index - start_index)//2
+
+    if arr[mid_index] == number:
+        current_end_pos = find_end_index(arr, number, mid_index + 1, end_index)
+        if current_end_pos != -1:
+            end_pos = current_end_pos
+        else:
+            end_pos = mid_index
+        return end_pos
+    elif arr[mid_index] < number:
+        return find_end_index(arr, number, mid_index + 1, end_index)
+    else:
+        return find_end_index(arr, number, start_index, mid_index - 1)
+
+
+def test_function(test_case):
+    input_list = test_case[0]
+    number = test_case[1]
+    solution = test_case[2]
+    output = first_and_last_index(input_list, number)
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+
+input_list = [1]
+number = 1
+solution = [0, 0]
+test_case_1 = [input_list, number, solution]
+test_function(test_case_1)
+
+input_list = [0, 1, 2, 3, 3, 3, 3, 4, 5, 6]
+number = 3
+solution = [3, 6]
+test_case_2 = [input_list, number, solution]
+test_function(test_case_2)
+
+input_list = [0, 1, 2, 3, 4, 5]
+number = 5
+solution = [5, 5]
+test_case_3 = [input_list, number, solution]
+test_function(test_case_3)
+
+input_list = [0, 1, 2, 3, 4, 5]
+number = 6
+solution = [-1, -1]
+test_case_4 = [input_list, number, solution]
+test_function(test_case_4)
+
+
+```
+# Trie
+https://en.wikipedia.org/wiki/Trie#targetText=In%20computer%20science%2C%20a%20trie,the%20keys%20are%20usually%20strings.
+
+You've learned about Trees and Binary Search Trees. In this notebook, you'll learn about a new type of Tree called Trie. Before we dive into the details, let's talk about the kind of problem Trie can help with.
+
+Let's say you want to build software that provides spell check. This software will only say if the word is valid or not. It doesn't give suggested words. From the knowledge you've already learned, how would you build this?
+
+The simplest solution is to have a hashmap of all known words. It would take O(1) to see if a word exists, but the memory size would be O(n*m), where n is the number of words and m is the length of the word. Let's see how a Trie can help decrease the memory usage while sacrificing a little on performance.
+
+## Basic Trie
+Let's look at a basic Trie with the following words: "a", "add", and "hi"
+
+```python
+
+basic_trie = {
+    # a and add word
+    'a': {
+        'd': {
+            'd': {'word_end': True},
+            'word_end': False},
+        'word_end': True},
+    # hi word
+    'h': {
+        'i': {'word_end': True},
+        'word_end': False}}
+
+
+print('Is "a"   a word: {}'.format(basic_trie['a']['word_end']))
+print('Is "ad"  a word: {}'.format(basic_trie['a']['d']['word_end']))
+print('Is "add" a word: {}'.format(basic_trie['a']['d']['d']['word_end']))
+
+
+```
+
+You can lookup a word by checking if word_end is True after traversing all the characters in the word. Let's look at the word "hi". The first letter is "h", so you would call basic_trie['h']. The second letter is "i", so you would call basic_trie['h']['i']. Since there's no more letters left, you would see if this is a valid word by getting the value of word_end. Now you have basic_trie['h']['i']['word_end'] with True or False if the word exists.
+
+In basic_trie, words "a" and "add" overlapp. This is where a Trie saves memory. Instead of having "a" and "add" in different cells, their characters treated like nodes in a tree. Let's see how we would check if a word exists in basic_trie.
+
+```python
+
+basic_trie = {
+    # a and add word
+    'a': {
+        'd': {
+            'd': {'word_end': True},
+            'word_end': False},
+        'word_end': True},
+    # hi word
+    'h': {
+        'i': {'word_end': True},
+        'word_end': False}}
+
+
+def is_word(word):
+    """
+    Look for the word in `basic_trie`
+    """
+    current_node = basic_trie
+    
+    for char in word:
+        if char not in current_node:
+            return False
+        
+        current_node = current_node[char]
+    
+    return current_node['word_end']
+
+
+# Test words
+test_words = ['ap', 'add']
+for word in test_words:
+    if is_word(word):
+        print('"{}" is a word.'.format(word))
+    else:
+        print('"{}" is not a word.'.format(word))
+
+
+
+```
+
+The is_word starts with the root node, basic_trie. It traverses each character (char) in the word (word). If a character doesn't exist while traversing, this means the word doesn't exist in the trie. Once all the characters are traversed, the function returns the value of current_node['word_end'].
+
+You might notice the function is_word is similar to a binary search tree traversal. Since Trie is a tree, it makes sense that we would use a type of tree traversal. Now that you've seen a basic example of a Trie, let's build something more familiar.
+
+## Trie Using a Class
+Just like most tree data structures, let's use classes to build the Trie. Implement two functions for the Trie class below. Implement add to add a word to the Trie. Implement exists to return True if the word exist in the trie and False if the word doesn't exist in the trie.
+
+```python
+
+class TrieNode(object):
+    def __init__(self):
+        self.is_word = False
+        self.children = {}
+
+
+class Trie(object):
+    def __init__(self):
+        self.root = TrieNode()
+
+    def add(self, word):
+        """
+        Add `word` to trie
+        """
+        current_node = self.root
+
+        for char in word:
+            if char not in current_node.children:
+                current_node.children[char] = TrieNode()
+            current_node = current_node.children[char]
+
+        current_node.is_word = True
+
+    def exists(self, word):
+        """
+        Check if word exists in trie
+        """
+        current_node = self.root
+
+        for char in word:
+            if char not in current_node.children:
+                return False
+            current_node = current_node.children[char]
+
+        return current_node.is_word
+
+word_list = ['apple', 'bear', 'goo', 'good', 'goodbye', 'goods', 'goodwill', 'gooses'  ,'zebra']
+word_trie = Trie()
+
+# Add words
+for word in word_list:
+    word_trie.add(word)
+
+# Test words
+test_words = ['bear', 'goo', 'good', 'goos']
+for word in test_words:
+    if word_trie.exists(word):
+        print('"{}" is a word.'.format(word))
+    else:
+        print('"{}" is not a word.'.format(word))
+
+
+
+
+```
+
+## Trie using Defaultdict (Optional)
+This is an optional section. Feel free to skip this and go to the next section of the classroom.
+
+A cleaner way to build a trie is with a Python default dictionary. The following TrieNod class is using collections.defaultdict instead of a normal dictionary.
+
+```python
+
+import collections
+
+
+class TrieNode:
+    def __init__(self):
+        self.children = collections.defaultdict(TrieNode)
+        self.is_word = False
+
+class Trie(object):
+    def __init__(self):
+        self.root = TrieNode()
+
+    def add(self, word):
+        """
+        Add `word` to trie
+        """
+        current_node = self.root
+
+        for char in word:
+            current_node = current_node.children[char]
+
+            current_node.is_word = True
+
+    def exists(self, word):
+        """
+        Check if word exists in trie
+        """
+        current_node = self.root
+
+        for char in word:
+            if char not in current_node.children:
+                return False
+
+            current_node = current_node.children[char]
+
+        return current_node.is_word
+
+# Add words
+valid_words = ['the', 'a', 'there', 'answer', 'any', 'by', 'bye', 'their']
+word_trie = Trie()
+for valid_word in valid_words:
+    word_trie.add(valid_word)
+
+# Tests
+assert word_trie.exists('the')
+assert word_trie.exists('any')
+assert not word_trie.exists('these')
+assert not word_trie.exists('zzz')
+print('All tests passed!')
+
+
+
+
+```
+
+The Trie data structure is part of the family of Tree data structures. It shines when dealing with sequence data, whether it's characters, words, or network nodes. When working on a problem with sequence data, ask yourself if a Trie is right for the job.
+
+
 
 
 
