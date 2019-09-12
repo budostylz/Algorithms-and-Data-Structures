@@ -942,6 +942,75 @@ Can we deduce any pattern from this?
 
 ![Get Child Nodes Given Parent](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/GetParentNodeGivenChildNode.PNG "Get Child Nodes Given Parent")
 
+```python
+
+class Heap:
+    def __init__(self, initial_size):
+        self.cbt = [None for _ in range(initial_size)]  # initialize arrays
+        self.next_index = 0  # denotes next index where new element should go
+
+    def _up_heapify(self):
+        child_index = self.next_index
+
+        while child_index >= 1:
+            parent_index = (child_index - 1) // 2
+            parent_element = self.cbt[parent_index]
+            child_element = self.cbt[child_index]
+
+            if parent_element > child_element:
+                self.cbt[parent_index] = child_element
+                self.cbt[child_index] = parent_element
+
+                child_index = parent_index
+            else:
+                break
+
+    def insert(self, data):
+        # insert element at the next index
+        self.cbt[self.next_index] = data
+
+        # heapify
+        self._up_heapify()
+
+        # increase index by 1
+        self.next_index += 1
+
+        # double the array and copy elements if next_index goes out of array bounds
+        if self.next_index >= len(self.cbt):
+            temp = self.cbt
+            self.cbt = [None for _ in range(2 * len(self.cbt))]
+
+            for index in range(self.next_index):
+                self.cbt[index] = temp[index]
+
+
+```
+
+## Remove
+For min-heaps, we remove the smallest element from our heaps. For max-heaps, we remove the largest element from the heap.
+
+By now, you must have realized that in case of min-heaps, the minimum element is stored at the root node of the complete binary tree. Again, we are emphasizing the fact that we will always visualize a complete binary tree as a binary tree and not an array.
+
+![Heap](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/heap3.PNG "Heap")
+
+Consider this CBT. Our remove operation should remove 10 from the tree. But if we remove 10, we need to put the next smaller element at the root node. But that will again leave one node empty. So, we will again have to go to our next smaller element and place it at the node that is empty. This sounds tedious.
+
+Rather, we use a very simple yet efficient trick to remove the element. We swap the first node of the tree (which is the minimum element for a min-heap) with the last node of the tree.
+
+If we think about the implementation of our complete binary tree, we know that 10 will now be present at the last index of the array. So, removing 10 is a O(1) operation.
+
+However, you might have noticed that our complete binary tree does not follow the heap order property which means that it's no longer a heap. So, just like last time, we heapify. This time however, we start at the top and heapify in downward direction. Therefore, this is also called as down-heapify.
+
+We look at 50 which is present at the root node, and compare it with both it's children. We take the minimum of the three nodes i.e. 50, 15, and 40, and place this minimum at the root node. At the same time, we place 50 at the node which we placed at the root node.
+
+Following this operation, our CBT looks like
+
+![Heap](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/heap5.PNG "Heap")
+
+
+
+
+
 
 
 
