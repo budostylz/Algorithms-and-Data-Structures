@@ -826,6 +826,23 @@ Ans.
 
 Therefore, because of the time complexity being O(log(n)), we prefer heaps over other popular data structures to create our Priority Queues.
 
+## Complete Binary Trees using Arrays
+Although we call them complete binary trees, and we will always visualize them as binary trees, we never use binary trees to create them. Instead, we actually use arrays to create our complete binary trees.
+
+Let's us see how.
+
+![Complete Binary Trees Using Arrays](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/array.PNG "Complete Binary Trees Using Arrays")
+
+An array is a contiguous blocks of memory with individual "blocks" are laid out one after the other in memory. We are used to visualizing arrays as sequential blocks of memory.
+
+However, if we visualize them in the following way, can we find some similarities between arrays and complete binary trees?
+
+![Complete Binary Trees Using Arrays](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/array2.PNG "Complete Binary Trees Using Arrays")
+
+
+
+
+
 
 
 
