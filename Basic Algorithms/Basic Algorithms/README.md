@@ -107,10 +107,7 @@ https://youtu.be/7WbRB7dSyvc
 
 As Brynn said in the video, we can approximate the efficiency of binary search by answering this question: How many steps do we have to take in the worst-case scenario?
 
-At each step, we check the middle element—and then we can rule out about half of the numbers (discarding everything to either the left or right). So if we start with nn numbers, then after the first step we will have half that many, or \frac{n}{2} 
-2
-n
-​	  left that we still need to check.
+At each step, we check the middle element—and then we can rule out about half of the numbers (discarding everything to either the left or right). So if we start with nn numbers, then after the first step we will have half that many, or n/2 left that we still need to check.
 
 
 
