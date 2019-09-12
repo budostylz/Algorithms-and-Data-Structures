@@ -52,3 +52,9 @@ https://www.geeksforgeeks.org/python-program-for-quicksort/
 
 ## VISUALIZE CODE AND GET LIVE HELP(Learn Python, Java, C, C++, JavaScript, and Ruby)
 http://pythontutor.com/
+
+## How to Choose the Right Data Structure 
+https://github.com/budostylz/Algorithms-and-Data-Structures/tree/master/Basic%20Algorithms/Basic%20Algorithms#priority-queues---intuition
+
+
+
