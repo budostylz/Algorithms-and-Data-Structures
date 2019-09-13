@@ -75,6 +75,9 @@ print ("Pass" if (sleep_times == [(24,23), (24,13), (24,3), (23,20), (22,5), (21
 ## Merge Sort
 https://youtu.be/K916wfSzKxE
 
+## Efficiency of Merge Sort
+https://youtu.be/HKiK5Y-YSkks
+
 ![Merge Sort](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Sorting%20Algorithms/mergesort.PNG "Merge Sort")
 
 ![Merge Sort](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Sorting%20Algorithms/mergesort2.PNG "Merge Sort")
