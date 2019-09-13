@@ -56,5 +56,6 @@ http://pythontutor.com/
 ## How to Choose the Right Data Structure 
 https://github.com/budostylz/Algorithms-and-Data-Structures/tree/master/Basic%20Algorithms/Basic%20Algorithms#priority-queues---intuition
 
-
+## List of data structures
+https://en.wikipedia.org/wiki/List_of_data_structures
 
