@@ -1227,11 +1227,12 @@ print('Call is_empty: {}'.format(heap.is_empty()))
 
 ```
 
-![Red-Black Tree](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/redblacktree.PNG "Red-Black Tree")
-
 
 ## Red–black tree
 https://en.wikipedia.org/wiki/Red%E2%80%93black_tree
+
+![Red-Black Tree](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Basic%20Algorithms/redblacktree.PNG "Red-Black Tree")
+
 
 ## Self-Balancing Trees
 https://youtu.be/EHI548K3jiw
