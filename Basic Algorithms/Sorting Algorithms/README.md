@@ -332,7 +332,7 @@ https://youtu.be/kUon6854joI
 https://youtu.be/TH5RT5XcdAo
 
 
-![Quick Sort](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Sorting%20Algorithms/quickSort2.PNG "Quick Sort")
+![Quick Sort](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Sorting%20Algorithms/quicksort2.PNG "Quick Sort")
 
 
 ## Quick Sort Walkthrough
@@ -492,3 +492,205 @@ print(items)
 
 
 ### Mission Accomplished!
+
+## Heapsort
+
+A heapsort is an in-place sorting algorithm that treats an array like a binary tree and moves the largest values to the end of the heap until the full array is sorted.
+
+The main steps in a heapsort are:
+
+1. Convert the array into a maxheap (a complete binary tree with decreasing values)
+2. Swap the top element with the last element in the array (putting it in it's correct final position)
+3. Repeat with arr[:len(arr)-1] (all but the sorted elements)
+
+## Visualization of a heapsort
+https://commons.wikimedia.org/wiki/File:Heapsort-example.gif
+
+## Problem statement
+In the cell below, see if you can code a heapsort function that takes an array (or Python list) and performs a heapsort on it. You will have to complete the heapify
+
+```python
+
+# Solution
+
+def heapify(arr, n, i):
+    # Using i as the index of the current node, find the 2 child nodes (if the array were a binary tree)
+    # and find the largest value.   If one of the children is larger swap the values and recurse into that subree
+    
+    # consider current index as largest
+    largest_index = i 
+    left_node = 2 * i + 1     
+    right_node = 2 * i + 2     
+  
+    # compare with left child
+    if left_node < n and arr[i] < arr[left_node]: 
+        largest_index = left_node
+  
+    # compare with right child
+    if right_node < n and arr[largest_index] < arr[right_node]: 
+        largest_index = right_node
+  
+    # if either of left / right child is the largest node
+    if largest_index != i: 
+        arr[i], arr[largest_index] = arr[largest_index], arr[i] 
+    
+        heapify(arr, n, largest_index) 
+        
+def heapsort(arr):
+    # First convert the array into a maxheap by calling heapify on each node, starting from the end   
+    # now that you have a maxheap, you can swap the first element (largest) to the end (final position)
+    # and make the array minus the last element into maxheap again.  Continue to do this until the whole
+    # array is sorted
+    n = len(arr) 
+  
+    # Build a maxheap. 
+    for i in range(n, -1, -1): 
+        heapify(arr, n, i) 
+  
+    # One by one extract elements 
+    for i in range(n-1, 0, -1): 
+        arr[i], arr[0] = arr[0], arr[i] # swap 
+        heapify(arr, i, 0) 
+
+def test_function(test_case):
+    heapsort(test_case[0])
+    if test_case[0] == test_case[1]:
+        print("Pass")
+    else:
+        print("False")
+
+arr = [3, 7, 4, 6, 1, 0, 9, 8, 9, 4, 3, 5]
+solution = [0, 1, 3, 3, 4, 4, 5, 6, 7, 8, 9, 9]
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [5, 5, 5, 3, 3, 3, 4, 4, 4, 4]
+solution = [3, 3, 3, 4, 4, 4, 4, 5, 5, 5]
+test_case = [arr, solution]
+test_function(test_case)
+
+arr = [99]
+solution = [99]
+test_case = [arr, solution]
+test_function(test_case)
+
+
+arr = [0, 1, 2, 5, 12, 21, 0]
+solution = [0, 0, 1, 2, 5, 12, 21]
+test_case = [arr, solution]
+test_function(test_case)
+
+```
+
+## Pair Sum
+
+## Problem Statement
+Given an input array and a target value (integer), find two values in the array whose sum is equal to the target value. Solve the problem without using extra space. You can assume the array has unique values and will never have more than one solution.
+
+```python
+
+def pair_sum(arr, target):
+    # sort the list
+    arr.sort()
+    
+    # initialize two pointer - one from start of the array and other from the end
+    front_index = 0
+    back_index = len(arr) - 1
+
+    # shift the pointers
+    while front_index < back_index:
+        front = arr[front_index]
+        back = arr[back_index]
+
+        if front + back == target:
+            return [front, back]
+        elif front + back < target:       # sum < target ==> shift front pointer forward
+            front_index += 1 
+        else:
+            back_index -= 1               # sum > target ==> shift back pointer backward
+
+    return [None, None]
+
+def test_function(test_case):
+    input_list = test_case[0]
+    target =test_case[1]
+    solution = test_case[2]
+    output = pair_sum(input_list, target)
+    if output == solution:
+        print("Pass")
+    else:
+        print("False")
+
+
+
+input_list = [2, 7, 11, 15]
+target = 9
+solution = [2, 7]
+test_case = [input_list, target, solution]
+test_function(test_case)
+
+input_list = [0, 8, 5, 7, 9]
+target = 9
+solution = [0, 9]
+test_case = [input_list, target, solution]
+test_function(test_case)
+
+input_list = [110, 9, 89]
+target = 9
+solution = [None, None]
+test_case = [input_list, target, solution]
+test_function(test_case)
+
+
+```
+
+## Sort 0, 1, 2
+
+```python
+
+def sort_012(input_list):
+    """
+    The idea is to put 0 and 2 in their correct positions, which will make sure
+    all the 1s are automatically placed in their right positions
+    """
+    # initialize pointers for next positions of 0 and 2
+    next_pos_0 = 0
+    next_pos_2 = len(input_list) - 1
+
+    front_index = 0
+
+    while front_index <= next_pos_2:
+        if input_list[front_index] == 0:
+            input_list[front_index] = input_list[next_pos_0]
+            input_list[next_pos_0] = 0
+            next_pos_0 += 1
+            front_index += 1
+        elif input_list[front_index] == 2:           
+            input_list[front_index] = input_list[next_pos_2] 
+            input_list[next_pos_2] = 2
+            next_pos_2 -= 1
+        else:
+            front_index += 1
+
+def test_function(test_case):
+    sort_012(test_case)
+    print(test_case)
+    if test_case == sorted(test_case):
+        print("Pass")
+    else:
+        print("Fail")
+
+
+test_case = [0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2]
+test_function(test_case)
+
+test_case = [2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1]
+test_function(test_case)
+
+test_case = [2, 2, 0, 0, 2, 1, 0, 2, 2, 1, 1, 1, 0, 1, 2, 0, 2, 0, 1]
+test_function(test_case)
+
+
+```
+
+
