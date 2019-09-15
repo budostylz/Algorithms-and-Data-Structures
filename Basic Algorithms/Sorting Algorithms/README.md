@@ -96,8 +96,6 @@ Once you have split the list down to single elements, your mergesort will start 
 ## Divide
 We can use python's // operator to find a midpoint. If items's length is even, we will have the midpoint. If items's length is odd, we will have one half larger by one.
 
-## QuickSort
-![New Tweet View](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Sorting%20Algorithms/quickSort.PNG "New Tweet View")
 
 ```python
 
@@ -326,3 +324,6 @@ test_function(test_case)
 
 
 ```
+
+## QuickSort
+![New Tweet View](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Basic%20Algorithms/Sorting%20Algorithms/quickSort.PNG "New Tweet View")
