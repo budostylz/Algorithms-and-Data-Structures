@@ -59,3 +59,9 @@ https://github.com/budostylz/Algorithms-and-Data-Structures/tree/master/Basic%20
 ## List of data structures
 https://en.wikipedia.org/wiki/List_of_data_structures
 
+## Algorithm Visualizer
+https://algorithm-visualizer.org/
+
+## VisuAlgo.net/en
+https://visualgo.net/en
+
