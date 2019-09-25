@@ -170,3 +170,5 @@ assert nodeR == dfs_search(nodeH, 'R')
 
 
 ```
+
+![Graph Algorithms](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Graph Algorithms")
