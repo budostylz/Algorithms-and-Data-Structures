@@ -178,5 +178,7 @@ We've done depth-first search previously using an iterative approach (i.e., usin
 
 The basic idea is to select a node and explore all the possible paths from that node, and to apply this recursively to each node we are exploring.
 
-You can see some helpful illustrations with various combinations here: https://www.cs.usfca.edu/~galles/visualization/DFS.html
+You can see some helpful illustrations with various combinations here: 
+
+https://www.cs.usfca.edu/~galles/visualization/DFS.html
 
