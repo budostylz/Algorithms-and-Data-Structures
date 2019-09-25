@@ -172,3 +172,11 @@ assert nodeR == dfs_search(nodeH, 'R')
 ```
 
 ![Graph Algorithms](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Graph Algorithms")
+
+## Graph Depth-First Search With Recursion
+We've done depth-first search previously using an iterative approach (i.e., using a loop). In this notebook, we'll show how to implement a recursive soluton.
+
+The basic idea is to select a node and explore all the possible paths from that node, and to apply this recursively to each node we are exploring.
+
+You can see some helpful illustrations with various combinations here: https://www.cs.usfca.edu/~galles/visualization/DFS.html
+
