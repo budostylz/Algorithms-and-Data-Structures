@@ -98,4 +98,32 @@ Now, we can fill this matrix up by breaking it into smaller LCS problems. For ex
 
 Here, the answer is zero and we fill in the corresponding grid cell with that value.
 
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
+
+
+Then, we ask the next question, what is the LCS between "AB" and "B"?
+
+<strong>Here, we have a match, and can fill in the appropriate value 1.</strong>
+
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
+
+If we continue along this row, we can actually see that B only matches this one time, and any further questions, such as — What is the LCS between "ABCD" and "B"? — will have that same value, 1, due to the initial B-B match.
+
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
+
+Then, we move on to the second row. "A" and "BD" have 0 matches.
+
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
+
+But "AB" and "BD" have a B-B match, which we've already noted in the cell above. Finally, we have a match at the end D-D. Where we can add one to our current highest match (1) to get a final LCS of 2.
+
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
+
+The final LCS will be that value 2.
+
+
+
+
+
+
 
