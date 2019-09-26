@@ -71,59 +71,12 @@ A short example:
         * B = 'BD'
     * The LCS is 'BD', which has a length of 2 characters
 
-## Storing pre-computed values
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Dynamic%20Programming/longest_common_subsequence1.PNG "Longest Common Subsequence")
 
-The LCS algorithm depends on looking at two strings and comparing them letter by letter. You can solve this problem in multiple ways. You can iterate through each letter in the strings and compare them, adding to your value for LCS as you go.
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Dynamic%20Programming/longest_common_subsequence2.PNG "Longest Common Subsequence")
 
-The method I recommend for implementing an efficient LCS algorithm is: using a matrix and dynamic programming. Recall that dynamic programming is all about breaking a larger problem into a smaller set of subproblems, and building up a complete result without having to repeat any subproblems.
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Dynamic%20Programming/longest_common_subsequence3.PNG "Longest Common Subsequence")
 
-This approach assumes that you can split up a large LCS task into a combination of smaller LCS tasks. Let's look at the short example in more detail:
-
-    * A = 'ABCD'
-    * B = 'BD'
-
-We can see right away that the longest subsequence of letters here is 2 (B and D are in sequence in both strings). And we can calculate this by looking at relationships between each letter in the two strings, A and B.
-
-Here, I have a matrix with the letters of A on top and the letters of B on the left side:
-
-
-![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
-
-
-
-
-This starts out as a matrix that has as many columns and rows as letters in the strings S and O +1 additional row and column, filled with zeros on the top and left sides. So, in this case, instead of a 2x4 matrix it is a 3x5.
-
-Now, we can fill this matrix up by breaking it into smaller LCS problems. For example, let's first look at the shortest substrings: the starting letter of A and B. We'll first ask, what is the Longest Common Subsequence between these two letters "A" and "B"?
-
-Here, the answer is zero and we fill in the corresponding grid cell with that value.
-
-![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
-
-
-Then, we ask the next question, what is the LCS between "AB" and "B"?
-
-<strong>Here, we have a match, and can fill in the appropriate value 1.</strong>
-
-![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
-
-If we continue along this row, we can actually see that B only matches this one time, and any further questions, such as — What is the LCS between "ABCD" and "B"? — will have that same value, 1, due to the initial B-B match.
-
-![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
-
-Then, we move on to the second row. "A" and "BD" have 0 matches.
-
-![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
-
-But "AB" and "BD" have a B-B match, which we've already noted in the cell above. Finally, we have a match at the end D-D. Where we can add one to our current highest match (1) to get a final LCS of 2.
-
-![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Graph%20Algorithms/graph.PNG "Longest Common Subsequence")
-
-The final LCS will be that value 2.
-
-
-
-
-
+![Longest Common Subsequence](https://github.com/budostylz/Algorithms-and-Data-Structures/blob/master/Advance%20Algorithms/Dynamic%20Programming/longest_common_subsequence4.PNG "Longest Common Subsequence")
 
 
