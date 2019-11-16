@@ -4,8 +4,6 @@ https://www.youtube.com/watch?v=53sC2ioHUM0
 ## Step Count Method to Measure Time Complexity of an Algorithm - Part 2
 https://www.youtube.com/watch?v=lcAq5bID_zs
 
-
-
 # Efficiency
 We said earlier that this Nanodegree program is about how to write code to solve problems and to do so efficiently.
 
